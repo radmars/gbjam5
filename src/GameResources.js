@@ -20,18 +20,14 @@ GBGJ.GameResources = (function() {
 			name: name,
 			type: "audio",
 			src: "data/audio/",
-			channels: 2 };
+			channels: 2,
+		};
 	}
 
 	function _AddAudioArray( name, num, parent ) {
 		for(var i = 1; i <= num; i++) {
 			parent.push(_Audio(name + "-" + i));
 		}
-	}
-
-	function _GetRandomIndexString(max) {
-		var index = Math.floor(Math.random() * max) + 1;
-		return "-" + index;
 	}
 
 	/**
@@ -55,6 +51,8 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("intro_mars"),
 		GBGJ.Image("intro_radmars1"),
 		GBGJ.Image("intro_radmars2"),
+
+		_Audio("radmarslogo"),
 	];
 
 	return GameResources;

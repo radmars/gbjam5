@@ -24,6 +24,7 @@ GBGJ.preload = function() {
 		alert("Your browser doesn't like MelonJS :(");
 		return;
 	}
+	me.audio.init("m4a,ogg");
 
 	me.loader.load(GBGJ.Image("8x8_font"), GBGJ.onload.bind(GBGJ));
 };
@@ -37,18 +38,24 @@ GBGJ.onload = function() {
 	});
 
 	// add "?debug=1" to the URL to enable the debug Panel
-	if (GBGJ.data.options.debug) {
+	if(GBGJ.data.options.debug) {
 		window.onReady(function() {
 			me.plugin.register.defer(GBGJ, me.debug.Panel, "debug", me.input.KEY.V);
 		});
 	}
 
+	if(GBGJ.data.options.mute) {
+		me.audio.muteAll();
+	}
+
 	me.state.set(me.state.LOADING, new GBGJ.LoadingScreen());
-	me.audio.init("m4a,ogg");
+	me.state.set(me.state.INTRO, new GBGJ.RadmarsScreen());
+
 	me.loader.onload = GBGJ.loaded.bind(GBGJ);
 	me.loader.preload( GBGJ.GameResources );
 };
 
 GBGJ.loaded = function() {
 	console.log("Loaded all assets");
+	me.state.change(me.state.INTRO);
 }
