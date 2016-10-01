@@ -17,7 +17,7 @@ GBGJ.RadmarsScreen = me.ScreenObject.extend({
 
 	keyHandler: function (action, keyCode, edge) {
 		if( keyCode === me.input.KEY.ENTER ) {
-			me.state.change( me.state.MENU);
+			me.state.change( me.state.PLAY);
 		}
 	},
 
@@ -57,13 +57,13 @@ GBGJ.RadmarsRenderable = me.Renderable.extend({
 
 		var offset = {
 			text: {
-				y: 88
+				y: 28
 			}
 		};
 
-		this.text_mars     = new me.Sprite(cx + 17, cy + offset.text.y, {image: "intro_mars"});
-		this.text_radmars1 = new me.Sprite(cx - 25, cy + offset.text.y, {image: "intro_radmars1"});
-		this.text_radmars2 = new me.Sprite(cx - 25, cy + offset.text.y, {image: "intro_radmars2"});
+		this.text_mars     = new me.Sprite(cx + 27, cy + offset.text.y, {image: "intro_mars"});
+		this.text_radmars1 = new me.Sprite(cx + 6, cy + offset.text.y, {image: "intro_radmars1"});
+		this.text_radmars2 = new me.Sprite(cx + 6, cy + offset.text.y, {image: "intro_radmars2"});
 
 		me.input.bindKey( me.input.KEY.ENTER, "enter", true );
 	},
@@ -99,7 +99,7 @@ GBGJ.RadmarsRenderable = me.Renderable.extend({
 			this.counter++;
 		}
 		else{
-			me.state.change(me.state.MENU);
+			me.state.change(me.state.PLAY);
 		}
 		// Have to force redraw for the flashing of the shades and text.
 		me.game.repaint();

@@ -7,14 +7,10 @@ GBGJ.ProgressBar = me.Renderable.extend({
 		this.barHeight = 4;
 		this.progress = 0;
 	},
-
-	// make sure the screen is refreshed every frame
 	onProgressUpdate : function (progress) {
 		this.progress = ~~(progress * this.width);
 		this.invalidate = true;
 	},
-
-	// make sure the screen is refreshed every frame
 	update : function () {
 		if (this.invalidate === true) {
 			this.invalidate = false;
@@ -47,10 +43,7 @@ GBGJ.ProgressBar = me.Renderable.extend({
 
 GBGJ.LoadingScreen = me.ScreenObject.extend({
 	onResetEvent : function () {
-		me.game.world.addChild(
-			new me.ColorLayer("background", GBGJ.dark, 0),
-			0
-		);
+		me.game.world.addChild( new me.ColorLayer("background", GBGJ.dark, 0), 0 );
 
 		var w = me.video.renderer.getWidth();
 		var h = me.video.renderer.getHeight();

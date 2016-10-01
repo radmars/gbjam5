@@ -50,6 +50,9 @@ GBGJ.onload = function() {
 
 	me.state.set(me.state.LOADING, new GBGJ.LoadingScreen());
 	me.state.set(me.state.INTRO, new GBGJ.RadmarsScreen());
+	me.state.set(me.state.PLAY, new GBGJ.PlayScreen(GBGJ.data.options.level || "level1"));
+
+	me.pool.register("Player", GBGJ.PlayerEntity);
 
 	me.loader.onload = GBGJ.loaded.bind(GBGJ);
 	me.loader.preload( GBGJ.GameResources );

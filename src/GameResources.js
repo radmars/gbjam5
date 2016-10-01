@@ -51,8 +51,14 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("intro_mars"),
 		GBGJ.Image("intro_radmars1"),
 		GBGJ.Image("intro_radmars2"),
-
 		_Audio("radmarslogo"),
+
+		// entities
+		GBGJ.Image("player"),
+
+		// levels
+		GBGJ.Image("tilemap"),
+		_Level("level1"),
 	];
 
 	return GameResources;
