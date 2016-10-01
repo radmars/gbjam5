@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>RadMars GB Jam #5</title>
+	<meta property='og:title' content="RadMars GB Jam #5: WORKING TITLE" />
+	<meta property='og:description' content='The best gameboy game ever' />
+	<meta property='og:image' content='http://radmars.com/gbjam5/data/image/favicon.png' />
+	<link rel="icon"
+		type="image/png"
+		href="data/image/favicon.png" />
+	<script src='libs/melonJS-3.1.0.js'></script>
+	<script src='libs/debugPanel-3.1.0.js'></script>
+
+	<script src='src/main.js'></script>
+	<script src='src/GameResources.js'></script>
+	<script src='src/Loader.js'></script>
+
+	<style>
+	body{
+		background-color: #1f1f1f; margin: 0 0; width: 100%; height: 100%;
+	}
+	canvas {
+		margin: auto auto;
+		display: block;
+	}
+	</style>
+</head>
+
+<body style=''>
+
+	<script type="text/javascript">
+	window.onReady(function onReady() {
+		GBGJ.preload();
+
+		// Mobile browser hacks
+		if (me.device.isMobile && !navigator.isCocoonJS) {
+			// Prevent the webview from moving on a swipe
+			window.document.addEventListener("touchmove", function (e) {
+				e.preventDefault();
+				window.scroll(0, 0);
+				return false;
+			}, false);
+		}
+	});
+	</script>
+</body>
+
+</html>
