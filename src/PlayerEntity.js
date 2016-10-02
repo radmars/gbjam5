@@ -60,13 +60,14 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		if(this.body.vel.x < this.minSpeed) {
 			this.body.vel.x = this.minSpeed;
 		}
-		this.cameraTargetPos.x = this.pos.x;
-		this.cameraTargetPos.y = this.pos.y;
+		this.cameraTargetPos.x = ~~(this.pos.x);
+		this.cameraTargetPos.y = ~~(this.pos.y);
 		me.collision.check(this);
 		this._super(me.Entity, 'update', [dt]);
 		return true;
 	},
 
 	onCollision : function (response, other) {
+		return false;
 	},
 });

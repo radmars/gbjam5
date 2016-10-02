@@ -55,6 +55,7 @@ GBGJ.GameResources = (function() {
 
 		// entities
 		GBGJ.Image("player"),
+		GBGJ.Image("enemy"),
 
 		// levels
 		GBGJ.Image("tilemap"),
