@@ -165,17 +165,17 @@
  </layer>
  <objectgroup name="entities">
   <object id="1" name="Player" x="40" y="50" width="16" height="16"/>
-  <object id="4" name="Enemy" x="251.333" y="72" width="16" height="16">
+  <object id="4" name="Enemy" x="211.667" y="35.3333" width="16" height="16">
    <properties>
     <property name="path" value="1"/>
    </properties>
   </object>
-  <object id="7" name="Enemy" x="100" y="21.6667" width="16" height="16">
+  <object id="7" name="Enemy" x="197.333" y="28.3333" width="16" height="16">
    <properties>
     <property name="path" value="3"/>
    </properties>
   </object>
-  <object id="9" name="Enemy" x="217.667" y="110.333" width="16" height="16">
+  <object id="9" name="Enemy" x="231" y="54" width="16" height="16">
    <properties>
     <property name="path" value="2"/>
    </properties>
@@ -184,19 +184,19 @@
    <properties>
     <property name="id" value="3"/>
    </properties>
-   <polyline points="-116.333,-12.3333 -146,7 -139.667,54 -100.333,66.6667"/>
+   <polyline points="-9.66667,-12.3333 -35.3333,3 -77.3333,18.6667 -118,17.6667"/>
   </object>
-  <object id="12" name="Path" x="260" y="78.3333">
+  <object id="12" name="Path" x="275" y="96">
    <properties>
     <property name="id" value="2"/>
    </properties>
-   <polyline points="0,0 -73,20 -193,19 -234,7.66667"/>
+   <polyline points="-49.3333,-29.6667 -73.3333,-6 -125.667,7 -187.333,7.33333"/>
   </object>
-  <object id="13" name="Path" x="225.667" y="119.667">
+  <object id="13" name="Path" x="209.333" y="109.333">
    <properties>
     <property name="id" value="1"/>
    </properties>
-   <polyline points="0,0 -103,-67 -197,-41.6667"/>
+   <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
   </object>
  </objectgroup>
 </map>
