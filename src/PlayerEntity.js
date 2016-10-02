@@ -86,6 +86,6 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	},
 
 	onCollision : function (response, other) {
-		return false;
+		return true;
 	},
 });
