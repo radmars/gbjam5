@@ -54,6 +54,7 @@ GBGJ.onload = function() {
 
 	me.pool.register("Player", GBGJ.PlayerEntity);
 	me.pool.register("Enemy", GBGJ.EnemyEntity, true);
+	me.pool.register("Boss", GBGJ.BossEntity, true);
 	me.pool.register("Path", GBGJ.PathEntity, true);
 
 	me.loader.onload = GBGJ.loaded.bind(GBGJ);
