@@ -4,15 +4,18 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	init : function (x, y, settings) {
 		settings = settings || {};
 		settings.image = "player";
-		settings.width = 16;
-		settings.height = 16;
-		settings.frameheight = 16;
-		settings.framewidth = 16;
-		settings.shapes = [ new me.Rect(0, 0, 16, 16) ]
+		settings.width = 24;
+		settings.height = 24;
+		settings.frameheight = 24;
+		settings.framewidth = 24;
+		settings.shapes = [ new me.Rect(0, 0, 24, 24) ]
 
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
-		this.minSpeed = .1
+		this.minSpeed = .1;
+		this.scrollSpeed = .01;
+		// floating point scroll distance.
+		this.scrollX = 70;
 
 		this.renderable.anchorPoint.y = .5
 		me.game.viewport.setDeadzone(10,10);
@@ -32,6 +35,15 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	},
 
 	tryToShoot: function(action, keyCode, edge) {
+		if(action == 'shoot') {
+			var bullet = new GBGJ.Bullet(this.pos.x, this.pos.y, {
+				dir: {
+					x: 1,
+					y: 0,
+				}
+			});
+			me.game.world.addChild(bullet, bullet.pos.z);
+		}
 	},
 
 	changeAnimation: function(dest, next) {
@@ -48,6 +60,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		me.event.unsubscribe(this.dashSub);
 	},
 
+	// melon's default entity renderer seems to wiggle a lot at low resolution...
 	draw : function (renderer) {
 		// draw the renderable's anchorPoint at the entity's anchor point
 		// the entity's anchor point is a scale from body position to body width/height
@@ -61,7 +74,8 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	update : function (dt) {
 		this.body.update(dt);
-		// TODO: Force auto scroll here...
+		var offset = new me.Vector2d();
+		me.game.viewport.localToWorld(0, 0, offset);
 		if(me.input.isKeyPressed('right')) {
 			this.body.vel.x += .1 * me.timer.tick;
 		}
@@ -75,11 +89,21 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			this.body.vel.y -= .1 * me.timer.tick;
 		}
 
-		if(this.body.vel.x < this.minSpeed) {
-			this.body.vel.x = this.minSpeed;
+		// Keep on screen.
+		if(this.pos.x < offset.x + 5) {
+			this.body.vel.x = 0;
+			this.pos.x = offset.x + 5;
 		}
-		this.cameraTargetPos.x = this.pos.x + 40;
-		this.cameraTargetPos.y = this.pos.y;
+
+		var w = me.video.renderer.getWidth();
+		if(this.pos.x > offset.x + w - 50) {
+			this.pos.x = offset.x + w - 50;
+		}
+
+		// TODO: Force auto scroll here...
+		this.scrollX += this.scrollSpeed * dt;
+		this.cameraTargetPos.x = ~~(this.scrollX);
+		this.cameraTargetPos.y = ~~(this.pos.y);
 		me.collision.check(this);
 		this._super(me.Entity, 'update', [dt]);
 		return true;

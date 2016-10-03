@@ -19,8 +19,11 @@
 		init : function (x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy';
-			settings.width = 16;
-			settings.height = 16;
+			settings.width = 25;
+			settings.height = 25;
+			settings.frameheight = 25;
+			settings.framewidth = 25;
+			settings.shapes = [ new me.Rect(0, 0, 25, 25) ]
 			this._super(me.Entity, 'init', [x, y, settings]);
 
 			this.body.setMaxVelocity(1, 1);
@@ -33,6 +36,18 @@
 			this.path = pathCache[settings.path];
 			this.pos.z = 5;
 			this.currentPoint = 0;
+		},
+
+		// melon's default entity renderer seems to wiggle a lot at low resolution...
+		draw : function (renderer) {
+			// draw the renderable's anchorPoint at the entity's anchor point
+			// the entity's anchor point is a scale from body position to body width/height
+			var x = ~~( this.pos.x + this.body.pos.x + (this.anchorPoint.x * this.body.width));
+			var y = ~~( this.pos.y + this.body.pos.y + (this.anchorPoint.y * this.body.height));
+
+			renderer.translate(x, y);
+			this.renderable.draw(renderer);
+			renderer.translate(-x, -y);
 		},
 
 		getPath: function() {

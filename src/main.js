@@ -15,10 +15,16 @@ GBGJ.data = {
 
 /* Get the bare essentials ready (so we can have a loading screen!) */
 GBGJ.preload = function() {
+
+	// Load URL parameters
+	window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+		GBGJ.data.options[key] = value;
+	});
+
 	// Initialize the video.
 	if (!me.video.init(160, 144, {
 		wrapper: null,
-		scale: 'auto',
+		scale: GBGJ.data.options.scale || 'auto',
 		scaleMethod: 'fit',
 	})) {
 		alert("Your browser doesn't like MelonJS :(");
@@ -32,10 +38,6 @@ GBGJ.preload = function() {
 GBGJ.onload = function() {
 	GBGJ.font = new me.BitmapFont("8x8_font", 8);
 
-	// Load URL parameters
-	window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-		GBGJ.data.options[key] = value;
-	});
 
 	// add "?debug=1" to the URL to enable the debug Panel
 	if(GBGJ.data.options.debug) {
