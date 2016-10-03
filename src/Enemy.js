@@ -92,6 +92,10 @@
 		},
 
 		onCollision : function (response, other) {
+			if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
+				console.log("Killed an enemy");
+				me.game.world.removeChild(this);
+			}
 			if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
 				return false;
 			}

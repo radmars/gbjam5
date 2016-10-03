@@ -198,7 +198,7 @@
    </properties>
    <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
   </object>
-  <object id="15" name="Boss" x="125.25" y="63.5" width="72" height="72"/>
+  <object id="15" name="Boss" x="425.25" y="33.5" width="72" height="72"/>
  </objectgroup>
  <objectgroup color="#ff0000" name="collision layer" opacity="0.79">
   <object id="16" x="0.666667" y="-0.333333" width="227" height="11.6667"/>

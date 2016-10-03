@@ -43,6 +43,7 @@ GBGJ.onload = function() {
 	if(GBGJ.data.options.debug) {
 		window.onReady(function() {
 			me.plugin.register.defer(GBGJ, me.debug.Panel, "debug", me.input.KEY.V);
+			me.debug.renderHitBox = true;
 		});
 	}
 
