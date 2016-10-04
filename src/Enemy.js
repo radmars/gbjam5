@@ -8,11 +8,16 @@
 			this.points = settings.points.map((e) => {return new me.Vector2d(~~(x + e.x), ~~(y + e.y))});
 			this.id = settings.id;
 			pathCache[this.id] = this;
+			this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+			var enemy = me.pool.pull(settings.type, x, y, {path: this});
+			me.game.world.addChild(enemy);
 		},
+
 		onDeactivateEvent: function() {
 			console.log("Deleting path")
 			delete pathCache[this.id];
 		},
+
 	});
 
 	GBGJ.EnemyEntity = me.Entity.extend({
@@ -31,9 +36,8 @@
 			if(!settings.path) {
 				throw "Can't find a path property!";
 			}
-			this.pathID = settings.path;
+			this.path = settings.path;
 
-			this.path = pathCache[settings.path];
 			this.pos.z = 5;
 			this.currentPoint = 0;
 		},
@@ -50,12 +54,8 @@
 			renderer.translate(-x, -y);
 		},
 
-		getPath: function() {
-			return pathCache[this.pathID];
-		},
-
 		update : function (dt) {
-			var points = this.getPath().points;
+			var points = this.path.points;
 			var point = points[this.currentPoint];
 			if(point) {
 				var dir = point.clone().sub(this.pos);

@@ -12,30 +12,32 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
-		this.minSpeed = .1;
+		this.moveSpeed = .1;
 		this.scrollSpeed = .01;
+
 		// floating point scroll distance.
 		this.scrollX = 70;
+		this.screenOffset = new me.Vector2d(this.pox, this.pos.y);
 
 		this.renderable.anchorPoint.y = .5
-		me.game.viewport.setDeadzone(10,10);
 
 		this.cameraTargetPos = new me.Vector2d(this.pos.x, this.pos.y);
 
 		me.game.viewport.follow(this.cameraTargetPos, me.game.viewport.AXIS.BOTH);
 
 		this.alwaysUpdate = true;
-		this.maxSpeed = 1;
 		this.body.collisionType = me.collision.types.PLAYER_OBJECT;
-		this.body.setMaxVelocity(this.maxSpeed, this.maxSpeed);
+		this.body.setMaxVelocity(0, 0);
 		this.body.setFriction(0, 0);
 		this.body.gravity = 0;
 
 		this.shootSub = me.event.subscribe(me.event.KEYDOWN, this.tryToShoot.bind(this));
+		this.shootTimer = 0;
 	},
 
 	tryToShoot: function(action, keyCode, edge) {
-		if(action == 'shoot') {
+		if(action == 'shoot' && this.shootTimer <= 0) {
+			this.shootTimer = 400;
 			var bullet = new GBGJ.Bullet(this.pos.x, this.pos.y, {
 				dir: {
 					x: 1,
@@ -73,21 +75,27 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	},
 
 	update : function (dt) {
-		this.body.update(dt);
 		var offset = new me.Vector2d();
 		me.game.viewport.localToWorld(0, 0, offset);
+
+		this.shootTimer = Math.max(0, this.shootTimer - dt);
 		if(me.input.isKeyPressed('right')) {
-			this.body.vel.x += .1 * me.timer.tick;
+			this.screenOffset.x += this.moveSpeed * dt;
 		}
 		if(me.input.isKeyPressed('left')) {
-			this.body.vel.x -= .1 * me.timer.tick;
+			this.screenOffset.x -= this.moveSpeed * dt;
 		}
 		if(me.input.isKeyPressed('down')) {
-			this.body.vel.y += .1 * me.timer.tick;
+			this.screenOffset.y += this.moveSpeed * dt;
 		}
 		if(me.input.isKeyPressed('up')) {
-			this.body.vel.y -= .1 * me.timer.tick;
+			this.screenOffset.y -= this.moveSpeed * dt;
 		}
+
+		me.game.viewport.setDeadzone(10,10);
+
+		this.pos.x = ~~(this.screenOffset.x + offset.x);
+		this.pos.y = ~~(this.screenOffset.y + offset.y);
 
 		// Keep on screen.
 		if(this.pos.x < offset.x + 5) {
@@ -105,11 +113,13 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.cameraTargetPos.x = ~~(this.scrollX);
 		this.cameraTargetPos.y = ~~(this.pos.y);
 		me.collision.check(this);
+
 		this._super(me.Entity, 'update', [dt]);
 		return true;
 	},
 
 	onCollision : function (response, other) {
+		this.screenOffset.y -= response.overlapV.y;
 		return true;
 	},
 });
