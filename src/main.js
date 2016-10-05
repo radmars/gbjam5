@@ -40,7 +40,7 @@ GBGJ.onload = function() {
 
 
 	// add "?debug=1" to the URL to enable the debug Panel
-	if(GBGJ.data.options.debug) {
+	if(GBGJ.data.options.debug && me.debug) {
 		window.onReady(function() {
 			me.plugin.register.defer(GBGJ, me.debug.Panel, "debug", me.input.KEY.V);
 			me.debug.renderHitBox = true;

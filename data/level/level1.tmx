@@ -184,12 +184,6 @@
    <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
   </object>
   <object id="15" name="Boss" x="425.25" y="33.5" width="72" height="72"/>
-  <object id="34" name="Path" type="Enemy" x="268.25" y="77.221">
-   <properties>
-    <property name="id" value="4"/>
-   </properties>
-   <polyline points="0,0 -23.25,49.3717 -87.5,47.0574 -87,-14.1429 -3.25,-46.0288 48.75,31.3716 -57.5,68.4004 -105,11.0572 -61,-48.8574 30,-11.8286 -3.75,73.029 -106,45.5145 -97.75,-34.2002 -28.75,-47.8288 53.5,7.71433 21.5,59.4003 -115,63.7718 -235.75,55.8003"/>
-  </object>
  </objectgroup>
  <objectgroup color="#ff0000" name="collision layer" opacity="0.79">
   <object id="16" x="0.666667" y="-0.333333" width="227" height="11.6667"/>

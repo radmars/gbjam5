@@ -24,7 +24,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.cameraTargetPos = new me.Vector2d(this.pos.x, this.pos.y);
 
 		me.game.viewport.follow(this.cameraTargetPos, me.game.viewport.AXIS.BOTH);
-
+		me.game.viewport.setDeadzone(10,10);
 		this.alwaysUpdate = true;
 		this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 		this.body.setMaxVelocity(0, 0);
@@ -75,10 +75,8 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	},
 
 	update : function (dt) {
-		var offset = new me.Vector2d();
-		me.game.viewport.localToWorld(0, 0, offset);
-
 		this.shootTimer = Math.max(0, this.shootTimer - dt);
+
 		if(me.input.isKeyPressed('right')) {
 			this.screenOffset.x += this.moveSpeed * dt;
 		}
@@ -92,14 +90,21 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			this.screenOffset.y -= this.moveSpeed * dt;
 		}
 
-		me.game.viewport.setDeadzone(10,10);
+		// TODO: Force auto scroll here...
+		//if(me.game.viewport.pos.x <= me.game.viewport.bounds.width - me.game.viewport.width) {
 
-		this.pos.x = ~~(this.screenOffset.x + offset.x);
-		this.pos.y = ~~(this.screenOffset.y + offset.y);
+		this.scrollX += this.scrollSpeed * dt;
+		this.cameraTargetPos.x = ~~(this.scrollX);
+		this.cameraTargetPos.y = ~~(this.pos.y);
+
+		var offset = new me.Vector2d();
+		me.game.viewport.updateTarget();
+		me.game.viewport.localToWorld(0, 0, offset);
+		this.pos.x = ~~(this.screenOffset.x) + ~~(offset.x);
+		this.pos.y = ~~(this.screenOffset.y);
 
 		// Keep on screen.
 		if(this.pos.x < offset.x + 5) {
-			this.body.vel.x = 0;
 			this.pos.x = offset.x + 5;
 		}
 
@@ -108,10 +113,6 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			this.pos.x = offset.x + w - 50;
 		}
 
-		// TODO: Force auto scroll here...
-		this.scrollX += this.scrollSpeed * dt;
-		this.cameraTargetPos.x = ~~(this.scrollX);
-		this.cameraTargetPos.y = ~~(this.pos.y);
 		me.collision.check(this);
 
 		this._super(me.Entity, 'update', [dt]);
