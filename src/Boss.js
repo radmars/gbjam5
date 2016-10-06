@@ -13,6 +13,7 @@
 
 			this.body.setMaxVelocity(1, 1);
 			this.body.gravity = 0;
+			this.hp = settings.hp || 20;
 
 			this.pos.z = 5;
 		},
@@ -40,14 +41,31 @@
 			}
 		},
 
+		die: function() {
+			me.state.current().setNextLevel("level2");
+			me.state.current().loadNextLevel();
+		},
+
+		damage: function() {
+			this.hp -= 1;
+			if(this.hp <= 0) {
+				me.game.world.removeChild(this);
+				me.timer.setTimeout(this.die.bind(this), 1000);
+			}
+		},
+
 		onCollision : function (response, other) {
+			if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
+				this.damage();
+				return false;
+			}
 			if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
 				return false;
 			}
 			if(other.body.collisionType == me.collision.types.PLAYER_OBJECT){
 				return false;
 			}
-			return true;
+			return false;
 		}
 	});
 })();

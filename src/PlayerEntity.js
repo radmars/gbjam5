@@ -59,7 +59,6 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	onDeactivateEvent: function() {
 		me.event.unsubscribe(this.shootSub);
-		me.event.unsubscribe(this.dashSub);
 	},
 
 	// melon's default entity renderer seems to wiggle a lot at low resolution...
@@ -101,7 +100,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		me.game.viewport.updateTarget();
 		me.game.viewport.localToWorld(0, 0, offset);
 		this.pos.x = ~~(this.screenOffset.x) + ~~(offset.x);
-		this.pos.y = ~~(this.screenOffset.y);
+		this.pos.y = ~~(this.screenOffset.y) + ~~(offset.y);
 
 		// Keep on screen.
 		if(this.pos.x < offset.x + 5) {

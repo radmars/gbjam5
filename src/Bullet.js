@@ -41,14 +41,14 @@ GBGJ.Bullet = me.Entity.extend({
 
 	update : function (dt) {
 		this.body.update(dt);
+		if(!me.game.viewport.isVisible(this)) {
+			me.game.world.removeChild(this);
+		}
 		me.collision.check(this);
 		return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 	},
 
 	onCollision : function (response, other) {
-		if(other.body.collisionType == me.collision.types.ENEMY_OBJECT) {
-			//other.damage();
-		}
 		if(other.body.collisionType == me.collision.types.PLAYER_OBJECT) {
 			//other.damage();
 		}

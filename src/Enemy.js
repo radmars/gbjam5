@@ -1,23 +1,15 @@
 "use strict";
 (function() {
-	var pathCache = {};
 
 	GBGJ.PathEntity = me.Entity.extend({
 		init: function(x, y, settings) {
 			this._super(me.Entity, 'init', [x, y, {height: settings.height, width: settings.width}]);
 			this.points = settings.points.map((e) => {return new me.Vector2d(~~(x + e.x), ~~(y + e.y))});
-			this.id = settings.id;
-			pathCache[this.id] = this;
 			this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+
 			var enemy = me.pool.pull(settings.type, x, y, {path: this});
 			me.game.world.addChild(enemy);
 		},
-
-		onDeactivateEvent: function() {
-			console.log("Deleting path")
-			delete pathCache[this.id];
-		},
-
 	});
 
 	GBGJ.EnemyEntity = me.Entity.extend({
@@ -93,7 +85,6 @@
 
 		onCollision : function (response, other) {
 			if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
-				console.log("Killed an enemy");
 				me.game.world.removeChild(this);
 			}
 			if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){

@@ -63,6 +63,7 @@ GBGJ.GameResources = (function() {
 		// levels
 		GBGJ.Image("tilemap"),
 		_Level("level1"),
+		_Level("level2"),
 	];
 
 	return GameResources;
