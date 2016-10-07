@@ -51,7 +51,7 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("intro_mars"),
 		GBGJ.Image("intro_radmars1"),
 		GBGJ.Image("intro_radmars2"),
-		_Audio("radmarslogo"),
+		_Audio("radboy"),
 
 		// entities
 		GBGJ.Image("player"),

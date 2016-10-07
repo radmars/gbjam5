@@ -12,7 +12,7 @@ GBGJ.RadmarsScreen = me.ScreenObject.extend({
 
 		this.subscription = me.event.subscribe( me.event.KEYDOWN, this.keyHandler.bind(this));
 
-		me.audio.play( "radmarslogo", false );
+		me.audio.play( "radboy", false );
 	},
 
 	keyHandler: function (action, keyCode, edge) {
