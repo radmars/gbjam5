@@ -64,6 +64,9 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 	levelLoaded: function() {
 		me.game.world.addChild( new me.ColorLayer("background", GBGJ.dark, 0), 0 );
 		me.game.viewport.fadeOut(GBGJ.black);
+		me.game.world.addChild(new GBGJ.LevelDisplay({
+			level: this.nextLevel,
+		}));
 	},
 
 	loadNextLevel: function() {
