@@ -17,7 +17,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 		// floating point scroll distance.
 		this.scrollX = 70;
-		this.screenOffset = new me.Vector2d(this.pox, this.pos.y);
+		this.screenOffset = this.pos.x;
 
 		this.renderable.anchorPoint.y = .5
 
@@ -77,40 +77,32 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.shootTimer = Math.max(0, this.shootTimer - dt);
 
 		if(me.input.isKeyPressed('right')) {
-			this.screenOffset.x += this.moveSpeed * dt;
+			this.screenOffset -= this.moveSpeed * dt;
 		}
 		if(me.input.isKeyPressed('left')) {
-			this.screenOffset.x -= this.moveSpeed * dt;
+			this.screenOffset += this.moveSpeed * dt;
 		}
 		if(me.input.isKeyPressed('down')) {
-			this.screenOffset.y += this.moveSpeed * dt;
+			this.pos.y += this.moveSpeed * dt;
 		}
 		if(me.input.isKeyPressed('up')) {
-			this.screenOffset.y -= this.moveSpeed * dt;
+			this.pos.y -= this.moveSpeed * dt;
 		}
 
 		// TODO: Force auto scroll here...
-		//if(me.game.viewport.pos.x <= me.game.viewport.bounds.width - me.game.viewport.width) {
+		if(me.game.viewport.pos.x < me.game.viewport.bounds.width - me.game.viewport.width) {
+			this.scrollX += this.scrollSpeed * dt * 3;
+		}
 
-		this.scrollX += this.scrollSpeed * dt;
 		this.cameraTargetPos.x = ~~(this.scrollX);
 		this.cameraTargetPos.y = ~~(this.pos.y);
 
-		var offset = new me.Vector2d();
-		me.game.viewport.updateTarget();
-		me.game.viewport.localToWorld(0, 0, offset);
-		this.pos.x = ~~(this.screenOffset.x) + ~~(offset.x);
-		this.pos.y = ~~(this.screenOffset.y) + ~~(offset.y);
+		// Screen offset is from the center, going LEFT. Smaller number = further right.
+		this.screenOffset = this.screenOffset.clamp(0, me.video.renderer.getWidth() / 2 + 5);
 
-		// Keep on screen.
-		if(this.pos.x < offset.x + 5) {
-			this.pos.x = offset.x + 5;
-		}
+		this.pos.x = ~~(this.scrollX) - ~~(this.screenOffset);
+		this.pos.y = ~~(this.pos.y);
 
-		var w = me.video.renderer.getWidth();
-		if(this.pos.x > offset.x + w - 50) {
-			this.pos.x = offset.x + w - 50;
-		}
 
 		me.collision.check(this);
 
@@ -119,7 +111,6 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	},
 
 	onCollision : function (response, other) {
-		this.screenOffset.y -= response.overlapV.y;
 		return true;
 	},
 });

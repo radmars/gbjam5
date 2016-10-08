@@ -64,6 +64,7 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("bullet"),
 
 		// levels
+		GBGJ.Image("bio_bg"),
 		GBGJ.Image("tilemap"),
 		_Level("level1"),
 		_Level("level2"),
