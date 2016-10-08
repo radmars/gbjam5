@@ -12,9 +12,10 @@ GBGJ.LevelDisplay = me.Renderable.extend({
 
 	draw: function(renderer) {
 		var screenWidth = renderer.getWidth();
+		var screenHeight = renderer.getHeight();
 		renderer.setColor(GBGJ.black);
-		renderer.fillRect(0, 0, screenWidth, 9);
-		GBGJ.font.draw(renderer, "OMG: " + this.level.toUpperCase(), screenWidth / 2 - this.width / 2, 0);
+		renderer.fillRect(0, screenHeight / 2 - 6, screenWidth, 10);
+		GBGJ.font.draw(renderer, "OMG: " + this.level.toUpperCase(), screenWidth / 2 - this.width / 2, screenHeight / 2 - this.height / 2);
 		renderer.setColor(GBGJ.white);
 	},
 

@@ -8,7 +8,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		settings.height = 32;
 		settings.frameheight = 32;
 		settings.framewidth = 32;
-		settings.shapes = [ new me.Rect(0, 0, 32, 32) ]
+		settings.shapes = [ new me.Rect(0, 0, 16, 16) ]
 
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
@@ -18,8 +18,6 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		// floating point scroll distance.
 		this.scrollX = 70;
 		this.screenOffset = this.pos.x;
-
-		this.renderable.anchorPoint.y = .5
 
 		this.cameraTargetPos = new me.Vector2d(this.pos.x, this.pos.y);
 
@@ -33,6 +31,11 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 		this.shootSub = me.event.subscribe(me.event.KEYDOWN, this.tryToShoot.bind(this));
 		this.shootTimer = 0;
+
+		this.renderable.addAnimation("idle", [0, 1, 2]);
+		this.renderable.addAnimation("shoot", [3, 4]);
+
+		this.changeAnimation("idle");
 	},
 
 	tryToShoot: function(action, keyCode, edge) {
@@ -45,32 +48,21 @@ GBGJ.PlayerEntity = me.Entity.extend({
 				}
 			});
 			me.game.world.addChild(bullet, bullet.pos.z);
+			this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
 		}
 	},
 
 	changeAnimation: function(dest, next) {
-		if(!this.renderable.isCurrentAnimation(this.getAnimationName(dest))) {
+		if(!this.renderable.isCurrentAnimation(dest)) {
 			if(next) {
 				next = next.bind(this);
 			}
-			this.renderable.setCurrentAnimation(this.getAnimationName(dest), next);
+			this.renderable.setCurrentAnimation(dest, next);
 		}
 	},
 
 	onDeactivateEvent: function() {
 		me.event.unsubscribe(this.shootSub);
-	},
-
-	// melon's default entity renderer seems to wiggle a lot at low resolution...
-	draw : function (renderer) {
-		// draw the renderable's anchorPoint at the entity's anchor point
-		// the entity's anchor point is a scale from body position to body width/height
-		var x = ~~( this.pos.x + this.body.pos.x + (this.anchorPoint.x * this.body.width));
-		var y = ~~( this.pos.y + this.body.pos.y + (this.anchorPoint.y * this.body.height));
-
-		renderer.translate(x, y);
-		this.renderable.draw(renderer);
-		renderer.translate(-x, -y);
 	},
 
 	update : function (dt) {
@@ -98,7 +90,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.cameraTargetPos.y = ~~(this.pos.y);
 
 		// Screen offset is from the center, going LEFT. Smaller number = further right.
-		this.screenOffset = this.screenOffset.clamp(0, me.video.renderer.getWidth() / 2 + 5);
+		this.screenOffset = this.screenOffset.clamp(-25, me.video.renderer.getWidth() / 2 + 5);
 
 		this.pos.x = ~~(this.scrollX) - ~~(this.screenOffset);
 		this.pos.y = ~~(this.pos.y);

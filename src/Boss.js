@@ -3,7 +3,7 @@
 (function() {
 	var pathCache = {};
 
-	GBGJ.BossEntity = me.Entity.extend({
+	GBGJ.Boss = me.Entity.extend({
 		init : function (x, y, settings) {
 			settings = settings || {};
 			settings.image = 'boss';

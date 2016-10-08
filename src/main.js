@@ -40,11 +40,14 @@ GBGJ.onload = function() {
 
 
 	// add "?debug=1" to the URL to enable the debug Panel
-	if(GBGJ.data.options.debug && me.debug) {
-		window.onReady(function() {
+	if(GBGJ.data.options.debug) {
+		var imported = document.createElement('script');
+		imported.src = 'libs/debugPanel-3.1.0.js';
+		imported.onreadystatechange = imported.onload = function() {
 			me.plugin.register.defer(GBGJ, me.debug.Panel, "debug", me.input.KEY.V);
 			me.debug.renderHitBox = true;
-		});
+		};
+		document.head.appendChild(imported);
 	}
 
 	if(GBGJ.data.options.mute) {
@@ -56,13 +59,18 @@ GBGJ.onload = function() {
 	me.state.set(me.state.PLAY, new GBGJ.PlayScreen(GBGJ.data.options.level || "level1"));
 
 	me.pool.register("Player", GBGJ.PlayerEntity);
-	me.pool.register("Boss", GBGJ.BossEntity, true);
-	me.pool.register("Path", GBGJ.PathEntity, true);
-	me.pool.register("LevelChanger", GBGJ.LevelChanger, true);
-	me.pool.register("Enemy1", GBGJ.Enemy1, true);
-	me.pool.register("Enemy2", GBGJ.Enemy2, true);
-	me.pool.register("Enemy3", GBGJ.Enemy3, true);
-	me.pool.register("Enemy4", GBGJ.Enemy4, true);
+	[
+		"Boss",
+		"Path",
+		"LevelChanger",
+		"Enemy1",
+		"Enemy2",
+		"Enemy3",
+		"Enemy4",
+		"Enemy5",
+	 ].forEach(function(type) {
+		 me.pool.register(type, GBGJ[type], true);
+	});
 
 	me.loader.onload = GBGJ.loaded.bind(GBGJ);
 	me.loader.preload( GBGJ.GameResources );

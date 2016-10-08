@@ -1,7 +1,7 @@
 "use strict";
 
 (function() {
-	GBGJ.PathEntity = me.Entity.extend({
+	GBGJ.Path = me.Entity.extend({
 		init: function(x, y, settings) {
 			this._super(me.Entity, 'init', [x, y, {height: settings.height, width: settings.width}]);
 			this.points = settings.points.map(function(e) {return new me.Vector2d(~~(x + e.x), ~~(y + e.y))});
@@ -15,37 +15,25 @@
 	GBGJ.BaseEnemyEntity = me.Entity.extend({
 		init : function (x, y, settings) {
 			settings = settings || {};
-			settings.shapes = [
-				new me.Rect(
-					0,
-					0,
-					settings.framewidth,
-					settings.frameheight
-				)
-			];
+			settings.width = settings.width || 32;
+			settings.height = settings.height || 32;
+			settings.framewidth = settings.framewidth || 32;
+			settings.frameheight =  settings.frameheight || 32;
 			this._super(me.Entity, 'init', [x, y, settings]);
+			this.pos.z = 5;
 
 			this.body.setMaxVelocity(1, 1);
 			this.body.gravity = 0;
+
 			if(!settings.path) {
 				throw "Can't find a path property!";
 			}
 			this.path = settings.path;
-
-			this.pos.z = 5;
 			this.currentPoint = 0;
-		},
 
-		// melon's default entity renderer seems to wiggle a lot at low resolution...
-		draw : function (renderer) {
-			// draw the renderable's anchorPoint at the entity's anchor point
-			// the entity's anchor point is a scale from body position to body width/height
-			var x = ~~( this.pos.x + this.body.pos.x + (this.anchorPoint.x * this.body.width));
-			var y = ~~( this.pos.y + this.body.pos.y + (this.anchorPoint.y * this.body.height));
-
-			renderer.translate(x, y);
-			this.renderable.draw(renderer);
-			renderer.translate(-x, -y);
+			this.renderable.addAnimation("idle", [0, 1, 2]);
+			this.renderable.addAnimation("hit", [2]);
+			this.changeAnimation("idle");
 		},
 
 		update : function (dt) {
@@ -103,10 +91,7 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy1';
-			settings.width = 32;
-			settings.height = 32;
-			settings.frameheight = 32;
-			settings.framewidth = 32;
+			settings.shapes = [ new me.Rect( 0, 0, 24, 18) ];
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -115,10 +100,7 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy2';
-			settings.width = 32;
-			settings.height = 32;
-			settings.frameheight = 32;
-			settings.framewidth = 32;
+			settings.shapes = [ new me.Rect( 0, 0, 16, 18) ];
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -127,10 +109,7 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy3';
-			settings.width = 32;
-			settings.height = 32;
-			settings.framewidth = 32;
-			settings.frameheight = 32;
+			settings.shapes = [ new me.Rect( 0, 0, 16, 10) ];
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -139,10 +118,7 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy4';
-			settings.width = 32;
-			settings.height = 32;
-			settings.framewidth = 32;
-			settings.frameheight = 32;
+			settings.shapes = [ new me.Rect( 0, 0, 16, 10) ];
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -151,10 +127,7 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy5';
-			settings.width = 32;
-			settings.height = 32;
-			settings.frameheight = 32;
-			settings.framewidth = 32;
+			settings.shapes = [ new me.Rect( 0, 0, 24, 24) ];
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
