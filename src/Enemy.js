@@ -4,10 +4,10 @@
 	GBGJ.PathEntity = me.Entity.extend({
 		init: function(x, y, settings) {
 			this._super(me.Entity, 'init', [x, y, {height: settings.height, width: settings.width}]);
-			this.points = settings.points.map((e) => {return new me.Vector2d(~~(x + e.x), ~~(y + e.y))});
+			this.points = settings.points.map(function(e) {return new me.Vector2d(~~(x + e.x), ~~(y + e.y))});
 			this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 
-			var enemy = me.pool.pull(settings.type, x, y, {path: this});
+			var enemy = me.pool.pull(settings.type, this.points[0].x, this.points[0].y, {path: this});
 			me.game.world.addChild(enemy);
 		},
 	});
@@ -99,25 +99,14 @@
 		}
 	});
 
-
-	GBGJ.Enemy1 = GBGJ.BaseEnemyEntity.extend({
-		init: function(x, y, settings) {
-			settings.image = 'enemy';
-			settings.width = 25;
-			settings.height = 25;
-			settings.frameheight = 25;
-			settings.framewidth = 25;
-		},
-	});
-
 	GBGJ.Enemy1 = GBGJ.BaseEnemyEntity.extend({
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy1';
-			settings.width = 25;
-			settings.height = 25;
-			settings.frameheight = 25;
-			settings.framewidth = 25;
+			settings.width = 32;
+			settings.height = 32;
+			settings.frameheight = 32;
+			settings.framewidth = 32;
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -126,10 +115,10 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy2';
-			settings.width = 18;
-			settings.height = 18;
-			settings.frameheight = 18;
-			settings.framewidth = 18;
+			settings.width = 32;
+			settings.height = 32;
+			settings.frameheight = 32;
+			settings.framewidth = 32;
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -138,10 +127,10 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy3';
-			settings.width = 20;
-			settings.height = 12;
-			settings.framewidth = 20;
-			settings.frameheight = 12;
+			settings.width = 32;
+			settings.height = 32;
+			settings.framewidth = 32;
+			settings.frameheight = 32;
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -150,10 +139,10 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy4';
-			settings.width = 14;
-			settings.height = 12;
-			settings.framewidth = 14;
-			settings.frameheight = 12;
+			settings.width = 32;
+			settings.height = 32;
+			settings.framewidth = 32;
+			settings.frameheight = 32;
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
@@ -162,10 +151,10 @@
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy5';
-			settings.width = 25;
-			settings.height = 25;
-			settings.frameheight = 25;
-			settings.framewidth = 25;
+			settings.width = 32;
+			settings.height = 32;
+			settings.frameheight = 32;
+			settings.framewidth = 32;
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});

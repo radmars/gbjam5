@@ -4,11 +4,11 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	init : function (x, y, settings) {
 		settings = settings || {};
 		settings.image = "player";
-		settings.width = 24;
-		settings.height = 24;
-		settings.frameheight = 24;
-		settings.framewidth = 24;
-		settings.shapes = [ new me.Rect(0, 0, 24, 24) ]
+		settings.width = 32;
+		settings.height = 32;
+		settings.frameheight = 32;
+		settings.framewidth = 32;
+		settings.shapes = [ new me.Rect(0, 0, 32, 32) ]
 
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
@@ -91,7 +91,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 		// TODO: Force auto scroll here...
 		if(me.game.viewport.pos.x < me.game.viewport.bounds.width - me.game.viewport.width) {
-			this.scrollX += this.scrollSpeed * dt * 3;
+			this.scrollX += this.scrollSpeed * dt;
 		}
 
 		this.cameraTargetPos.x = ~~(this.scrollX);
