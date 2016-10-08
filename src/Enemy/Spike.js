@@ -6,6 +6,7 @@
 			settings = settings || {};
 			settings.image = 'enemy3';
 			settings.shapes = [ new me.Rect( 0, 0, 16, 10) ];
+			settings.speed = 1;
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});
