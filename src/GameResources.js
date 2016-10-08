@@ -55,8 +55,11 @@ GBGJ.GameResources = (function() {
 
 		// entities
 		GBGJ.Image("player"),
-		GBGJ.Image("enemy"),
 		GBGJ.Image("enemy1"),
+		GBGJ.Image("enemy2"),
+		GBGJ.Image("enemy3"),
+		GBGJ.Image("enemy4"),
+		GBGJ.Image("enemy5"),
 		GBGJ.Image("boss"),
 		GBGJ.Image("bullet"),
 

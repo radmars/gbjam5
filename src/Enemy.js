@@ -1,6 +1,6 @@
 "use strict";
-(function() {
 
+(function() {
 	GBGJ.PathEntity = me.Entity.extend({
 		init: function(x, y, settings) {
 			this._super(me.Entity, 'init', [x, y, {height: settings.height, width: settings.width}]);
@@ -12,15 +12,17 @@
 		},
 	});
 
-	GBGJ.EnemyEntity = me.Entity.extend({
+	GBGJ.BaseEnemyEntity = me.Entity.extend({
 		init : function (x, y, settings) {
 			settings = settings || {};
-			settings.image = 'enemy';
-			settings.width = 25;
-			settings.height = 25;
-			settings.frameheight = 25;
-			settings.framewidth = 25;
-			settings.shapes = [ new me.Rect(0, 0, 25, 25) ]
+			settings.shapes = [
+				new me.Rect(
+					0,
+					0,
+					settings.framewidth,
+					settings.frameheight
+				)
+			];
 			this._super(me.Entity, 'init', [x, y, settings]);
 
 			this.body.setMaxVelocity(1, 1);
@@ -95,5 +97,76 @@
 			}
 			return true;
 		}
+	});
+
+
+	GBGJ.Enemy1 = GBGJ.BaseEnemyEntity.extend({
+		init: function(x, y, settings) {
+			settings.image = 'enemy';
+			settings.width = 25;
+			settings.height = 25;
+			settings.frameheight = 25;
+			settings.framewidth = 25;
+		},
+	});
+
+	GBGJ.Enemy1 = GBGJ.BaseEnemyEntity.extend({
+		init: function(x, y, settings) {
+			settings = settings || {};
+			settings.image = 'enemy1';
+			settings.width = 25;
+			settings.height = 25;
+			settings.frameheight = 25;
+			settings.framewidth = 25;
+			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
+		},
+	});
+
+	GBGJ.Enemy2 = GBGJ.BaseEnemyEntity.extend({
+		init: function(x, y, settings) {
+			settings = settings || {};
+			settings.image = 'enemy2';
+			settings.width = 18;
+			settings.height = 18;
+			settings.frameheight = 18;
+			settings.framewidth = 18;
+			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
+		},
+	});
+
+	GBGJ.Enemy3 = GBGJ.BaseEnemyEntity.extend({
+		init: function(x, y, settings) {
+			settings = settings || {};
+			settings.image = 'enemy3';
+			settings.width = 20;
+			settings.height = 12;
+			settings.framewidth = 20;
+			settings.frameheight = 12;
+			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
+		},
+	});
+
+	GBGJ.Enemy4 = GBGJ.BaseEnemyEntity.extend({
+		init: function(x, y, settings) {
+			settings = settings || {};
+			settings.image = 'enemy4';
+			settings.width = 14;
+			settings.height = 12;
+			settings.framewidth = 14;
+			settings.frameheight = 12;
+			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
+		},
+	});
+
+	GBGJ.Enemy5 = GBGJ.BaseEnemyEntity.extend({
+		init: function(x, y, settings) {
+			settings = settings || {};
+			settings.image = 'enemy5';
+			settings.width = 25;
+			settings.height = 25;
+			settings.frameheight = 25;
+			settings.framewidth = 25;
+			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
+		},
 	});
 })();

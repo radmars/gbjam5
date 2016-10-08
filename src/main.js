@@ -56,9 +56,12 @@ GBGJ.onload = function() {
 	me.state.set(me.state.PLAY, new GBGJ.PlayScreen(GBGJ.data.options.level || "level1"));
 
 	me.pool.register("Player", GBGJ.PlayerEntity);
-	me.pool.register("Enemy", GBGJ.EnemyEntity, true);
 	me.pool.register("Boss", GBGJ.BossEntity, true);
 	me.pool.register("Path", GBGJ.PathEntity, true);
+	me.pool.register("Enemy1", GBGJ.Enemy1, true);
+	me.pool.register("Enemy2", GBGJ.Enemy2, true);
+	me.pool.register("Enemy3", GBGJ.Enemy3, true);
+	me.pool.register("Enemy4", GBGJ.Enemy4, true);
 
 	me.loader.onload = GBGJ.loaded.bind(GBGJ);
 	me.loader.preload( GBGJ.GameResources );
