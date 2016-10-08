@@ -63,11 +63,11 @@ GBGJ.onload = function() {
 		"Boss",
 		"Path",
 		"LevelChanger",
-		"Enemy1",
-		"Enemy2",
-		"Enemy3",
-		"Enemy4",
-		"Enemy5",
+		"EnemyBasic",
+		"EnemyBoomer",
+		"EnemyShooter",
+		"EnemySpike",
+		"EnemyTank",
 	 ].forEach(function(type) {
 		 me.pool.register(type, GBGJ[type], true);
 	});

@@ -16,20 +16,20 @@
  </layer>
  <objectgroup name="entities" offsetx="0.545455" offsety="0.181818">
   <object id="1" name="Player" x="40" y="50" width="16" height="16"/>
-  <object id="11" name="Path" type="Enemy1" x="207.849" y="53.9394">
+  <object id="11" name="Path" type="EnemyShooter" x="207.849" y="53.9394">
    <polyline points="-9.66667,-12.3333 -35.3333,3 -77.3333,18.6667 -182.5,23.1667"/>
   </object>
-  <object id="12" name="Path" type="Enemy3" x="282.455" y="100.909">
+  <object id="12" name="Path" type="EnemySpike" x="282.455" y="100.909">
    <polyline points="-49.3333,-29.6667 -73.3333,-6 -125.667,7 -239.583,18.0833"/>
   </object>
-  <object id="13" name="Path" type="Enemy2" x="209.333" y="109.333">
+  <object id="13" name="Path" type="EnemyBoomer" x="209.333" y="109.333">
    <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
   </object>
   <object id="15" name="Boss" x="525.455" y="17.0909" width="72" height="72"/>
-  <object id="37" name="Path" type="Enemy1" x="568" y="41">
+  <object id="37" name="Path" type="EnemyShooter" x="568" y="41">
    <polyline points="-96.1667,-20.3333 -124.333,3 -238.333,40.6667 -10.5,41.1667"/>
   </object>
-  <object id="38" name="Path" type="Enemy4" x="287.273" y="134.364">
+  <object id="38" name="Path" type="EnemyBasic" x="287.273" y="134.364">
    <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
   </object>
  </objectgroup>

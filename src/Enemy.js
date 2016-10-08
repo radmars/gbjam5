@@ -86,49 +86,4 @@
 			return true;
 		}
 	});
-
-	GBGJ.Enemy1 = GBGJ.BaseEnemyEntity.extend({
-		init: function(x, y, settings) {
-			settings = settings || {};
-			settings.image = 'enemy1';
-			settings.shapes = [ new me.Rect( 0, 0, 24, 18) ];
-			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
-		},
-	});
-
-	GBGJ.Enemy2 = GBGJ.BaseEnemyEntity.extend({
-		init: function(x, y, settings) {
-			settings = settings || {};
-			settings.image = 'enemy2';
-			settings.shapes = [ new me.Rect( 0, 0, 16, 18) ];
-			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
-		},
-	});
-
-	GBGJ.Enemy3 = GBGJ.BaseEnemyEntity.extend({
-		init: function(x, y, settings) {
-			settings = settings || {};
-			settings.image = 'enemy3';
-			settings.shapes = [ new me.Rect( 0, 0, 16, 10) ];
-			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
-		},
-	});
-
-	GBGJ.Enemy4 = GBGJ.BaseEnemyEntity.extend({
-		init: function(x, y, settings) {
-			settings = settings || {};
-			settings.image = 'enemy4';
-			settings.shapes = [ new me.Rect( 0, 0, 16, 10) ];
-			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
-		},
-	});
-
-	GBGJ.Enemy5 = GBGJ.BaseEnemyEntity.extend({
-		init: function(x, y, settings) {
-			settings = settings || {};
-			settings.image = 'enemy5';
-			settings.shapes = [ new me.Rect( 0, 0, 24, 24) ];
-			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
-		},
-	});
 })();
