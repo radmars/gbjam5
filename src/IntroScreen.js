@@ -43,27 +43,33 @@ GBGJ.RadmarsRenderable = me.Renderable.extend({
 		});
 		this.bg.pos.x = cx;
 		this.bg.pos.y = cy;
+		var glassesXOffset = me.loader.getImage("intro_glasses1").width / 2;
+		var glassesYOffset = me.loader.getImage("intro_glasses1").height / 2
 
 		// Positions are relative to the size of the BG image.
-		this.glasses1 = new me.Sprite(cx, 0, {image: "intro_glasses1"});
+		this.glasses1 = new me.Sprite(cx - glassesXOffset, 0, {image: "intro_glasses1"});
+		this.glasses1.anchorPoint.set(0, 0);
 		new me.Tween(this.glasses1.pos).to({
-			x: cx,
-			y: cy,
+			x: cx - glassesXOffset,
+			y: cy - glassesYOffset,
 		}, 1600).start();
 
-		this.glasses2 = new me.Sprite(cx, cy, {image: "intro_glasses2"});
-		this.glasses3 = new me.Sprite(cx, cy, {image: "intro_glasses3"});
-		this.glasses4 = new me.Sprite(cx, cy, {image: "intro_glasses4"});
+		this.glasses2 = new me.Sprite(cx - glassesXOffset, cy - glassesYOffset, {image: "intro_glasses2"});
+		this.glasses3 = new me.Sprite(cx - glassesXOffset, cy - glassesYOffset, {image: "intro_glasses3"});
+		this.glasses4 = new me.Sprite(cx - glassesXOffset, cy - glassesYOffset, {image: "intro_glasses4"});
+		this.glasses2.anchorPoint.set(0, 0);
+		this.glasses3.anchorPoint.set(0, 0);
+		this.glasses4.anchorPoint.set(0, 0);
 
-		var offset = {
-			text: {
-				y: 28
-			}
-		};
+		var textY = cy + 28 - me.loader.getImage("intro_mars").height
 
-		this.text_mars     = new me.Sprite(cx + 27, cy + offset.text.y, {image: "intro_mars"});
-		this.text_radmars1 = new me.Sprite(cx + 6, cy + offset.text.y, {image: "intro_radmars1"});
-		this.text_radmars2 = new me.Sprite(cx + 6, cy + offset.text.y, {image: "intro_radmars2"});
+		this.text_mars     = new me.Sprite(cx,      textY, {image: "intro_mars"});
+		this.text_radmars1 = new me.Sprite(cx - 21, textY, {image: "intro_radmars1"});
+		this.text_radmars2 = new me.Sprite(cx - 21, textY, {image: "intro_radmars2"});
+
+		this.text_mars.anchorPoint.set(0, 0);
+		this.text_radmars1.anchorPoint.set(0, 0);
+		this.text_radmars2.anchorPoint.set(0, 0);
 
 		me.input.bindKey( me.input.KEY.ENTER, "enter", true );
 	},
@@ -99,7 +105,7 @@ GBGJ.RadmarsRenderable = me.Renderable.extend({
 			this.counter++;
 		}
 		else{
-			me.state.change(me.state.PLAY);
+			//me.state.change(me.state.PLAY);
 		}
 		// Have to force redraw for the flashing of the shades and text.
 		me.game.repaint();
