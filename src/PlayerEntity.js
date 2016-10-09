@@ -57,6 +57,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 					})
 				);
 			}
+			me.game.viewport.shake(3, 500);
 			this.bombTimer = 500;
 			this.bombs--;
 			me.state.current().getBullets().slice().forEach(function(b) {
