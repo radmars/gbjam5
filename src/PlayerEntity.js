@@ -38,7 +38,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.shootTimer = 0;
 
 		this.renderable.addAnimation("idle", [0, 1, 2]);
-		this.renderable.addAnimation("shoot", [3, 4]);
+		this.renderable.addAnimation("shoot", [3, 4], 50);
 
 		this.changeAnimation("idle");
 	},
@@ -72,7 +72,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	tryToShoot: function(action, keyCode, edge) {
 		if(action == 'shoot' && this.shootTimer <= 0) {
-			this.shootTimer = 400;
+			this.shootTimer = 100;
 			var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
 				dir: {
 					x: 1,

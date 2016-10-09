@@ -18,6 +18,7 @@ GBGJ.Bullet = me.Entity.extend({
 		this.body.gravity = 0;
 		this.setDirection(settings.dir);
 		this.setMask(settings.hurts);
+		this.damage = 1;
 
 		this.bombSub = me.event.subscribe("drop da bomb", this.checkBomb.bind(this));
 

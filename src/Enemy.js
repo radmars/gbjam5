@@ -36,8 +36,9 @@
 			this.bombSub = me.event.subscribe("drop da bomb", this.checkBomb.bind(this));
 
 			this.renderable.addAnimation("idle", [0, 1, 2]);
-			this.renderable.addAnimation("hit", [2]);
+			this.renderable.addAnimation("hit", [3]);
 			this.changeAnimation("idle");
+			this.hp=2;
 		},
 
 		onDeactivateEvent: function() {
@@ -126,8 +127,14 @@
 		},
 
 		onCollision : function (response, other) {
+			var damage = other.damage; 
+			if( damage == null ){
+				damage = 1; 
+			}
+			
 			if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
-				this.die();
+				this.takeHit(damage);
+				//this.die();
 			}
 			if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
 				return false;
@@ -137,7 +144,16 @@
 			}
 			return true;
 		},
-
+		
+		takeHit: function (damage) {
+			this.hp--; 
+			if(this.hp<=0){
+				this.die();
+			}else{
+				this.changeAnimation("hit", this.changeAnimation.bind(this, "idle"));
+			}
+		},
+		
 		getPlayer: function () {
 			return me.state.current().player;
 		},
