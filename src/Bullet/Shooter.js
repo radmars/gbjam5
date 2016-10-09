@@ -8,6 +8,7 @@ GBGJ.BulletShooter = GBGJ.Bullet.extend({
 		settings.width = 16;
 		settings.height = 16;
 		settings.hurts = me.collision.types.PLAYER_OBJECT;
+		settings.shapes = [ new me.Rect(0, 0, 8, 8)];
 
 		this._super(GBGJ.Bullet, 'init', [x, y, settings]);
 	}

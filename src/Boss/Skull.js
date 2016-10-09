@@ -13,5 +13,34 @@ GBGJ.SkullBoss = GBGJ.Boss.extend({
 		this.renderable.addAnimation("hit", [0, 4, 0, 4]);
 		this.renderable.addAnimation("die", [0, 4]);
 		this.changeAnimation("idle");
+		this.bulletTimer = 0;
+		this.rotator = 0;
 	},
+
+	update: function(dt) {
+		if(this.bulletTimer > 400) {
+			var angle = this.rotator++ / 10 * Math.PI / 2;
+			if(this.rotator > 4) {
+				this.rotator = 0;
+			}
+			me.game.world.addChild(
+				new GBGJ.BulletShooter(this.pos.x + 20, this.pos.y, {
+					speed: 1,
+					dir: (new me.Vector2d(-1, 1)).rotate(angle).normalize(),
+				})
+			);
+			me.game.world.addChild(
+				new GBGJ.BulletShooter(this.pos.x + 20, this.pos.y, {
+					speed: 1,
+					dir: (new me.Vector2d(-1, -1)).rotate(angle).normalize(),
+				})
+			);
+			this.bulletTimer = 0;
+		}
+
+		this.bulletTimer += dt;
+
+		this._super(GBGJ.Boss, 'update', [dt]);
+		return true;
+	}
 });
