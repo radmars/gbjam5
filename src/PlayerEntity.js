@@ -43,8 +43,12 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.changeAnimation("idle");
 	},
 
+	addBomb: function() {
+		this.setBombs(this.bombs + 1);
+	},
+
 	setBombs: function(n) {
-		this.bombs = 3;
+		this.bombs = n;
 		me.event.publish("somebody set us up the bomb", [this]);
 	},
 
@@ -64,7 +68,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			}
 			me.game.viewport.shake(3, 500);
 			this.bombTimer = 500;
-			this.bombs--;
+			this.setBombs(this.bombs - 1);
 			me.event.publish("drop da bomb", [this]);
 		}
 	},
@@ -148,7 +152,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			var angle = (0).randomFloat(Math.PI * 2);
 			var ca = Math.cos(angle);
 			var sa = Math.sin(angle);
-			
+
 			me.game.world.addChild(
 				new GBGJ.BigExplode(
 					this.pos.x + ca * (1).random(4),
@@ -171,6 +175,9 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		}
 		if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
 			this.die();
+		}
+		if(other.body.collisionType == me.collision.types.COLLECTABLE_OBJECT) {
+			return false;
 		}
 		return true;
 	},

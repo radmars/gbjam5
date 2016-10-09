@@ -1,12 +1,13 @@
 "use strict";
 
 (function() {
-	GBGJ.EnemyShooter = GBGJ.BaseEnemyEntity.extend({
+	GBGJ.EnemyShooter = GBGJ.Enemy.extend({
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy1';
 			settings.shapes = [ new me.Rect( 0, 0, 24, 18) ];
 			settings.speed = GBGJ.Constant.speed.medium;
+			settings.hp = 3;
 
 			this.bullet = {
 				type: 'BulletShooter',
@@ -19,7 +20,7 @@
 				shoot: 0,
 			};
 
-			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
+			this._super(GBGJ.Enemy, 'init', [x, y, settings]);
 		},
 
 		update: function(dt) {
@@ -31,7 +32,7 @@
 				this.cooldown_remaining.shoot = this.cooldown.shoot;
 			}
 
-			return (this._super(GBGJ.BaseEnemyEntity, 'update', [dt]));
+			return (this._super(GBGJ.Enemy, 'update', [dt]));
 		},
 	});
 })();
