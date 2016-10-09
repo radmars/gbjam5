@@ -19,23 +19,6 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		me.game.world.autoSort = true;
 		me.game.world.autoDepth = false;
 
-		var keys = {
-			left:  [me.input.KEY.LEFT, me.input.KEY.A],
-			right: [me.input.KEY.RIGHT, me.input.KEY.D],
-			up:    [me.input.KEY.UP, me.input.KEY.W],
-			down:  [me.input.KEY.DOWN, me.input.KEY.S],
-
-			shoot: [me.input.KEY.SPACE, me.input.KEY.J],
-			bomb:  [me.input.KEY.K],
-			OK:    [me.input.KEY.ENTER],
-		};
-
-		Object.keys(keys).forEach(function(k) {
-			keys[k].forEach(function(code) {
-				me.input.bindKey(code, k);
-			})
-		})
-
 		this.loadNextLevel();
 	},
 
