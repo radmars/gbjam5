@@ -8,7 +8,7 @@
 			this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 
 			var enemy = me.pool.pull(settings.type, this.points[0].x, this.points[0].y, {path: this});
-			me.game.world.addChild(enemy);
+			me.state.current().addEnemy(enemy);
 		},
 	});
 
@@ -79,7 +79,7 @@
 				// Default to straight left
 				dir : (new me.Vector2d(speed, 0)).rotate(angle),
 			});
-			me.game.world.addChild(bullet, bullet.pos.z);
+			bullet.add();
 		},
 
 		changeAnimation: function(dest, next) {
@@ -91,9 +91,13 @@
 			}
 		},
 
+		die: function() {
+			me.state.current().removeEnemy(this);
+		},
+
 		onCollision : function (response, other) {
 			if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
-				me.game.world.removeChild(this);
+				this.die();
 			}
 			if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
 				return false;

@@ -14,6 +14,8 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.pos.z = 6;
 		this.moveSpeed = .1;
 		this.scrollSpeed = .01;
+		this.bombs = 3;
+		this.bombTimer = 0;
 
 		// floating point scroll distance.
 		this.scrollX = 70;
@@ -32,6 +34,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.body.gravity = 0;
 
 		this.shootSub = me.event.subscribe(me.event.KEYDOWN, this.tryToShoot.bind(this));
+		this.shootSub = me.event.subscribe(me.event.KEYDOWN, this.tryToBomb.bind(this));
 		this.shootTimer = 0;
 
 		this.renderable.addAnimation("idle", [0, 1, 2]);
@@ -39,6 +42,34 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 		this.changeAnimation("idle");
 	},
+
+	tryToBomb: function(action, keyCode, edge) {
+		if(action == 'bomb' && this.bombs > 0 && this.bombTimer <= 0) {
+			var numChunks = 8;
+			for(var i = 0; i < numChunks; i++) {
+				var angle = i * 2 * Math.PI / numChunks;
+				me.game.world.addChild(
+					new GBGJ.BombDebris(this.pos.x, this.pos.y, {
+						dir: {
+							x: Math.cos(angle),
+							y: Math.sin(angle),
+						}
+					})
+				);
+			}
+			this.bombTimer = 500;
+			this.bombs--;
+			me.state.current().getBullets().slice().forEach(function(b) {
+				b.remove();
+			});
+			me.state.current().getEnemies().slice().forEach(function(e) {
+				if(me.game.viewport.isVisible(e)) {
+					e.die();
+				}
+			});
+		}
+	},
+
 
 	tryToShoot: function(action, keyCode, edge) {
 		if(action == 'shoot' && this.shootTimer <= 0) {
@@ -49,7 +80,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 					y: 0,
 				}
 			});
-			me.game.world.addChild(bullet, bullet.pos.z);
+			bullet.add();
 			this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
 		}
 	},
@@ -69,6 +100,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	update : function (dt) {
 		this.shootTimer = Math.max(0, this.shootTimer - dt);
+		this.bombTimer = Math.max(0, this.bombTimer- dt);
 
 		if(me.input.isKeyPressed('right')) {
 			this.screenOffset -= this.moveSpeed * dt;
@@ -106,5 +138,50 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	onCollision : function (response, other) {
 		return true;
+	},
+});
+
+GBGJ.BombDebris = me.Entity.extend({
+		init : function (x, y, settings) {
+		settings = settings || {};
+		settings.image = "explode_16";
+		settings.width = 16;
+		settings.height = 16;
+		settings.framewidth = settings.width;
+		settings.frameheight = settings.height;
+		this._super(me.Entity, 'init', [x, y, settings]);
+
+		this.pos.z = 10;
+		this.speed = settings.speed || 5;
+		this.body.collisionType = me.collision.types.USER;
+		this.body.setVelocity(0, 0);
+		this.body.setMaxVelocity(this.speed, this.speed);
+		this.body.setFriction(0, 0);
+		this.body.gravity = 0;
+		this.setDirection(settings.dir);
+		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+		this.renderable.addAnimation("loop", [0, 1, 2, 3]);
+		this.renderable.setCurrentAnimation("loop", this.end.bind(this));
+	},
+
+	end: function() {
+		me.game.world.removeChild(this);
+	},
+
+	setDirection: function(dir) {
+		this.body.vel.x = dir.x * this.speed;
+		this.body.vel.y = dir.y * this.speed;
+		this.renderable.angle = Math.atan2(dir.y, dir.x);
+	},
+
+	onDeactivateEvent: function() {
+	},
+
+	update : function (dt) {
+		this.body.update(dt);
+		if(!me.game.viewport.isVisible(this)) {
+			me.game.world.removeChild(this);
+		}
+		return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 	},
 });

@@ -73,6 +73,7 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("handboss"),
 		GBGJ.Image("skullboss"),
 		GBGJ.Image("finalboss"),
+		GBGJ.Image("explode_16"),
 
 		// levels
 		GBGJ.Image("bio_bg"),

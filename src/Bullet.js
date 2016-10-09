@@ -38,10 +38,18 @@ GBGJ.Bullet = me.Entity.extend({
 	onDeactivateEvent: function() {
 	},
 
+	add: function() {
+		me.state.current().addBullet(this);
+	},
+
+	remove: function() {
+		me.state.current().removeBullet(this);
+	},
+
 	update : function (dt) {
 		this.body.update(dt);
 		if(!me.game.viewport.isVisible(this)) {
-			me.game.world.removeChild(this);
+			this.remove();
 		}
 		me.collision.check(this);
 		return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
@@ -54,7 +62,7 @@ GBGJ.Bullet = me.Entity.extend({
 
 		// Bullets never respond to collisions other than with destruction.
 		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
-		me.game.world.removeChild(this);
+		this.remove();
 
 		return false;
 	}

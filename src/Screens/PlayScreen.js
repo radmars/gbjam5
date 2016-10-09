@@ -15,9 +15,40 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		this.loadNextLevel()
 	},
 
+	addBullet: function(b) {
+		this.allBullets.push(b);
+		me.game.world.addChild(b, b.pos.z);
+	},
+
+	removeBullet: function(b) {
+		this.allBullets.remove(b);
+		me.game.world.removeChild(b);
+	},
+
+	getBullets: function() {
+		return this.allBullets;
+	},
+
+	addEnemy: function(e) {
+		this.allEnemies.push(e);
+		me.game.world.addChild(e);
+	},
+
+	removeEnemy: function(e) {
+		this.allEnemies.remove(e);
+		me.game.world.removeChild(e);
+	},
+
+	getEnemies: function() {
+		return this.allEnemies;
+	},
+
 	onResetEvent: function() {
 		me.game.world.autoSort = true;
 		me.game.world.autoDepth = false;
+
+		this.allBullets = [];
+		this.allEnemies = [];
 
 		var keys = {
 			left:  [me.input.KEY.LEFT, me.input.KEY.A],
@@ -26,7 +57,7 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 			down:  [me.input.KEY.DOWN, me.input.KEY.S],
 
 			shoot: [me.input.KEY.SPACE, me.input.KEY.J],
-			dash:  [me.input.KEY.K, me.input.KEY.SHIFT],
+			bomb:  [me.input.KEY.K, me.input.KEY.SHIFT],
 			OK:    [me.input.KEY.ENTER],
 		};
 
@@ -35,33 +66,6 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 				me.input.bindKey(code, k);
 			})
 		})
-
-		if(me.input.GAMEPAD) {
-			me.input.bindGamepad(0,
-				{type: 'button', code: me.input.GAMEPAD.BUTTONS.FACE_2},
-				 keys.dash[0]
-			 );
-			me.input.bindGamepad(0,
-				{type: 'button', code:  me.input.GAMEPAD.BUTTONS.FACE_1},
-				keys.shoot[0]
-			 );
-			me.input.bindGamepad(0,
-				{type: 'button', code: me.input.GAMEPAD.BUTTONS.UP},
-				keys.up[0]
-			);
-			me.input.bindGamepad(0,
-				{type: 'button', code: me.input.GAMEPAD.BUTTONS.DOWN},
-				keys.down[0]
-			);
-			me.input.bindGamepad(0,
-				{type: 'button', code: me.input.GAMEPAD.BUTTONS.LEFT},
-				keys.left[0]
-			);
-			me.input.bindGamepad(0,
-				{type: 'button', code: me.input.GAMEPAD.BUTTONS.RIGHT},
-				keys.right[0]
-			);
-		}
 
 		this.loadNextLevel();
 	},
