@@ -8,20 +8,22 @@
 			settings.height = settings.height || 32;
 			settings.framewidth = settings.framewidth || 32;
 			settings.frameheight =  settings.frameheight || 32;
-			settings.speed =  settings.speed || 1;
+			this.speed =  settings.speed || 1;
 			settings.hp = settings.hp || 2;
 
 			this._super(me.Entity, 'init', [x, y, settings]);
 			this.pos.z = 5;
 
-			this.body.setMaxVelocity(settings.speed, settings.speed);
+			this.body.setMaxVelocity(this.speed, this.speed);
 			this.body.gravity = 0;
 
 			if(!settings.path) {
-				throw "Can't find a path property!";
+				this.currentPoint = -1;
 			}
-			this.path = settings.path;
-			this.currentPoint = 0;
+			else {
+				this.path = settings.path;
+				this.currentPoint = 0;
+			}
 
 			this.bombSub = me.event.subscribe("drop da bomb", this.checkBomb.bind(this));
 
@@ -41,7 +43,13 @@
 			}
 		},
 
-		update : function (dt) {
+		// Method for choosing travel direction for an enemy that no longer has a predefined path.
+		chooseDirection : function() {
+			// This should be overridden for specific enemies that don't want to just move forward.
+			return new me.Vector2d(-this.speed, 0);
+		},
+
+		followPath : function() {
 			var points = this.path.points;
 			var point = points[this.currentPoint];
 			if(point) {
@@ -54,15 +62,32 @@
 					dir = point.clone().sub(this.pos).normalize();
 				}
 				else {
-					dir.x = 0;
-					dir.y = 0;
+					this.currentPoint = -1;
+					dir = this.chooseDirection();
 				}
-
-				this.body.vel.x = dir.x * me.timer.tick;
-				this.body.vel.y = dir.y * me.timer.tick;
-
-				this.body.update(dt);
 			}
+			else {
+				this.currentPoint = -1;
+				dir = this.chooseDirection();
+			}
+
+			return dir;
+		},
+
+		update : function (dt) {
+			var dir;
+			if (this.currentPoint === -1) {
+				// Freedom from predetermined pathing!
+				dir = this.chooseDirection();
+			}
+			else {
+				dir = this.followPath();
+			}
+
+			this.body.vel.x = dir.x * me.timer.tick;
+			this.body.vel.y = dir.y * me.timer.tick;
+
+			this.body.update(dt);
 
 			me.collision.check(this);
 
