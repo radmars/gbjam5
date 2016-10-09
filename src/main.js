@@ -96,9 +96,10 @@ GBGJ.states = {
 	Play:     2 + me.state.USER,
 	Title:    3 + me.state.USER,
 	Controls: 4 + me.state.USER,
+	Credits:  5 + me.state.USER,
 };
 
 GBGJ.loaded = function() {
 	console.log("Loaded all assets");
-	me.state.change(GBGJ.states.Intro);
+	me.state.change(GBGJ.states.Controls);
 }
