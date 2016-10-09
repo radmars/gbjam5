@@ -7,6 +7,7 @@
 			settings.image = 'enemy1';
 			settings.shapes = [ new me.Rect( 0, 0, 24, 18) ];
 			settings.speed = GBGJ.Constant.speed.medium;
+			settings.hp = 3;
 
 			this.bullet = {
 				type: 'BulletShooter',

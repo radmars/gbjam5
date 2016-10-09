@@ -7,6 +7,7 @@
 			settings.image = 'enemy3';
 			settings.shapes = [ new me.Rect( 0, 0, 16, 10) ];
 			settings.speed = GBGJ.Constant.speed.slow;
+			settings.hp = 2;
 	
 			this.bullet = {
 				type: 'BulletSpike',

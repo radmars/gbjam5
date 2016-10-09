@@ -9,6 +9,7 @@
 			settings.framewidth = settings.framewidth || 32;
 			settings.frameheight =  settings.frameheight || 32;
 			settings.speed =  settings.speed || 1;
+			settings.hp = settings.hp || 2;
 
 			this._super(me.Entity, 'init', [x, y, settings]);
 			this.pos.z = 5;
@@ -27,7 +28,7 @@
 			this.renderable.addAnimation("idle", [0, 1, 2]);
 			this.renderable.addAnimation("hit", [3, 2]);
 			this.changeAnimation("idle");
-			this.hp=2;
+			this.hp = settings.hp;
 		},
 
 		onDeactivateEvent: function() {
