@@ -13,7 +13,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
 		this.moveSpeed = .1;
-		this.scrollSpeed = parseFloat(GBGJ.data.options.speed_hack || "0.0") + 0.01;
+		this.scrollSpeed = parseFloat(GBGJ.data.options.speed_hack || "0.0") + 0.0125;
 		this.setBombs(3);
 		this.bombTimer = 0;
 
@@ -40,11 +40,17 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.renderable.addAnimation("idle", [0, 1, 2]);
 		this.renderable.addAnimation("shoot", [3, 4], 75);
 
+		this.weapon = GBGJ.playerWeapon;
+		
 		this.changeAnimation("idle");
 	},
 
 	addBomb: function() {
 		this.setBombs(this.bombs + 1);
+	},
+	
+	addShotgun: function() {
+		GBGJ.playerWeapon = this.weapon = "shotgun";
 	},
 
 	setBombs: function(n) {
@@ -76,15 +82,38 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	tryToShoot: function(action, keyCode, edge) {
 		if(action == 'shoot' && this.shootTimer <= 0) {
-			this.shootTimer = 150;
-			var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
-				dir: {
-					x: 1,
-					y: 0,
-				}
-			});
-			bullet.add();
-			this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
+			switch( this.weapon ){
+				case "shotgun":
+					this.shootTimer = 250;
+					this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
+					
+					var bullet = new GBGJ.BulletPlayerBig(this.pos.x, this.pos.y-6, {
+						dir: { x: 1, y: 0, }
+					});
+					bullet.add();
+					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
+						dir: { x: 0.75, y: -0.25, }
+					});
+					bullet.add();
+					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
+						dir: { x: 0.75, y: 0.25, }
+					});
+					bullet.add();
+					break;
+				default:
+					this.shootTimer = 150;
+					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
+						dir: {
+							x: 1,
+							y: 0,
+						}
+					});
+					bullet.add();
+					this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
+					break;
+			}
+			
+			
 		}
 	},
 
@@ -142,7 +171,9 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	die: function() {
 		me.game.world.removeChild(this);
-
+		
+		GBGJ.playerWeapon = this.weapon = "";
+		
 		me.game.viewport.shake(5, 1000, me.game.viewport.AXIS.BOTH, function() {
 			me.state.change(GBGJ.states.GameOver);
 		});

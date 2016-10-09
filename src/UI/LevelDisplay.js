@@ -15,7 +15,27 @@ GBGJ.LevelDisplay = me.Renderable.extend({
 		var screenHeight = renderer.getHeight();
 		renderer.setColor(GBGJ.black);
 		renderer.fillRect(0, screenHeight / 2 - 6, screenWidth, 10);
-		GBGJ.font.draw(renderer, "OMG: " + this.level.toUpperCase(), screenWidth / 2 - this.width / 2, screenHeight / 2 - this.height / 2);
+		
+		var text = "UNKNOWN AREA"; 
+		switch( this.level){
+			case "level1":
+				text = "SPACEMARS ORBIT"; 
+				break;
+			case "level2":
+				text = "FACILITY ENTRANCE"; 
+				break;
+			case "level3":
+				text = "FACILITY"; 
+				break;
+			case "level4":
+				text = "CORRUPTED CORE"; 
+				break;	
+			case "level5":
+				text = "LAIR OF THE TAINTED GOD"; 
+				break;	
+		}
+		
+		GBGJ.font.draw(renderer, text, screenWidth / 2 - this.width / 2-30, screenHeight / 2 - this.height / 2);
 		renderer.setColor(GBGJ.white);
 	},
 

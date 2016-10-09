@@ -81,6 +81,9 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("explode_32"),
 		GBGJ.Image("blood_32"),
 		GBGJ.Image("powerup_bomb_16"),
+		GBGJ.Image("powerup_triple_16"),
+		GBGJ.Image("powerup_rocket_16"),
+		GBGJ.Image("bullet_player_big_16"),
 
 		// levels
 		GBGJ.Image("bio_bg"),

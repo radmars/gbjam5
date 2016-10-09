@@ -6,7 +6,7 @@ GBGJ.black = new me.Color().parseCSS("#1f1f1f");
 GBGJ.dark  = new me.Color().parseCSS("#4d533c");
 GBGJ.light = new me.Color().parseCSS("#8b956d");
 GBGJ.white = new me.Color().parseCSS("#c4cfa1");
-
+GBGJ.playerWeapon = "";
 GBGJ.colors = [GBGJ.black, GBGJ.dark, GBGJ.light, GBGJ.white];
 
 GBGJ.data = {
@@ -69,6 +69,7 @@ GBGJ.onload = function() {
 	me.pool.register("Player", GBGJ.PlayerEntity);
 	[
 		"Bomb",
+		"Shotgun",
 		"Boss",
 		"Path",
 		"LevelChanger",
@@ -81,6 +82,7 @@ GBGJ.onload = function() {
 		"EnemySpike",
 		"EnemyTank",
 		"BulletPlayer",
+		"BulletPlayerBig",
 		"BulletSpike",
 		"BulletShooter",
 	 ].forEach(function(type) {
