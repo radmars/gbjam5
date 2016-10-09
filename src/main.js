@@ -54,15 +54,26 @@ GBGJ.onload = function() {
 		me.audio.muteAll();
 	}
 
-	me.state.set(me.state.LOADING, new GBGJ.LoadingScreen());
-	me.state.set(me.state.INTRO, new GBGJ.RadmarsScreen());
-	me.state.set(me.state.PLAY, new GBGJ.PlayScreen(GBGJ.data.options.level || "level1"));
+	Object.keys(GBGJ.states).forEach(function(key) {
+		var ctor = GBGJ[key + "Screen"];
+		if(!ctor) {
+			throw "Missing constructor for " + key + " screen";
+		}
+		me.state.set(
+			GBGJ.states[key],
+			// some sort of javascript magick
+			new (Function.prototype.bind.call(ctor))()
+		);
+	});
 
 	me.pool.register("Player", GBGJ.PlayerEntity);
 	[
 		"Boss",
 		"Path",
 		"LevelChanger",
+		"HandBoss",
+		"FinalBoss",
+		"SkullBoss",
 		"EnemyBasic",
 		"EnemyBoomer",
 		"EnemyShooter",
@@ -74,11 +85,19 @@ GBGJ.onload = function() {
 		 me.pool.register(type, GBGJ[type], true);
 	});
 
-	me.loader.onload = GBGJ.loaded.bind(GBGJ);
-	me.loader.preload( GBGJ.GameResources );
+	me.loader.preload( GBGJ.GameResources, GBGJ.loaded.bind(GBGJ), false );
+	me.state.change(GBGJ.states.Loading);
+};
+
+GBGJ.states = {
+	Loading:  0 + me.state.USER,
+	Intro:    1 + me.state.USER,
+	Play:     2 + me.state.USER,
+	Title:    3 + me.state.USER,
+	Controls: 4 + me.state.USER,
 };
 
 GBGJ.loaded = function() {
 	console.log("Loaded all assets");
-	me.state.change(me.state.INTRO);
+	me.state.change(GBGJ.states.Intro);
 }

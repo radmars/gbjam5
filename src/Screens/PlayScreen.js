@@ -1,13 +1,18 @@
 "use strict";
 
 GBGJ.PlayScreen = me.ScreenObject.extend({
-	init: function(startingLevel) {
+	init: function() {
 		this._super(me.ScreenObject, 'init', []);
-		this.setNextLevel(startingLevel); //"level1"
+		this.setNextLevel(GBGJ.data.options.level || "level1");
 	},
 
 	setNextLevel: function(name) {
 		this.nextLevel = name;
+	},
+
+	goToNextLevel: function(level) {
+		this.setNextLevel(level);
+		this.loadNextLevel()
 	},
 
 	onResetEvent: function() {
@@ -62,7 +67,6 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 	},
 
 	levelLoaded: function() {
-		me.game.viewport.fadeOut(GBGJ.black);
 		me.game.world.addChild(new GBGJ.LevelDisplay({
 			level: this.nextLevel,
 		}));
