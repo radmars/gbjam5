@@ -104,6 +104,24 @@
 		},
 
 		die: function() {
+			var angle = (0).randomFloat(Math.PI * 2);
+			var ca = Math.cos(angle);
+			var sa = Math.sin(angle);
+			var x = this.pos.x + ca * (0).randomFloat(1);
+			var y = this.pos.y + sa * (0).randomFloat(1);
+			me.game.world.addChild(
+				new GBGJ.BloodChunk(
+					~~(x),
+					~~(y),
+					{
+						speed: (0).randomFloat(1),
+						dir: {
+							x: ca,
+							y: sa,
+						},
+					}
+				)
+			);
 			me.game.world.removeChild(this);
 		},
 

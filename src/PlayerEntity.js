@@ -13,7 +13,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
 		this.moveSpeed = .1;
-		this.scrollSpeed = .01;
+		this.scrollSpeed = (GBGJ.data.options.speed_hack || 0) + 0.01;
 		this.setBombs(3);
 		this.bombTimer = 0;
 
@@ -34,7 +34,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.body.gravity = 0;
 
 		this.shootSub = me.event.subscribe(me.event.KEYDOWN, this.tryToShoot.bind(this));
-		this.shootSub = me.event.subscribe(me.event.KEYDOWN, this.tryToBomb.bind(this));
+		this.bombSub = me.event.subscribe(me.event.KEYDOWN, this.tryToBomb.bind(this));
 		this.shootTimer = 0;
 
 		this.renderable.addAnimation("idle", [0, 1, 2]);
@@ -95,6 +95,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	onDeactivateEvent: function() {
 		me.event.unsubscribe(this.shootSub);
+		me.event.unsubscribe(this.bombSub);
 	},
 
 	update : function (dt) {
@@ -137,45 +138,5 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	onCollision : function (response, other) {
 		return true;
-	},
-});
-
-// TODO Should be particle
-GBGJ.BombDebris = me.Entity.extend({
-		init : function (x, y, settings) {
-		settings = settings || {};
-		settings.image = "explode_16";
-		settings.width = 16;
-		settings.height = 16;
-		settings.framewidth = settings.width;
-		settings.frameheight = settings.height;
-		this._super(me.Entity, 'init', [x, y, settings]);
-
-		this.pos.z = 10;
-		this.speed = settings.speed || 5;
-		this.body.collisionType = me.collision.types.USER;
-		this.body.setVelocity(0, 0);
-		this.body.setMaxVelocity(this.speed, this.speed);
-		this.body.setFriction(0, 0);
-		this.body.gravity = 0;
-		this.setDirection(settings.dir);
-		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
-		this.renderable.addAnimation("loop", [0, 1, 2, 3]);
-		this.renderable.setCurrentAnimation("loop", this.end.bind(this));
-	},
-
-	end: function() {
-		me.game.world.removeChild(this);
-	},
-
-	setDirection: function(dir) {
-		this.body.vel.x = dir.x * this.speed;
-		this.body.vel.y = dir.y * this.speed;
-		this.renderable.angle = Math.atan2(dir.y, dir.x);
-	},
-
-	update : function (dt) {
-		this.body.update(dt);
-		return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 	},
 });
