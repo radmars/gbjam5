@@ -40,6 +40,8 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 	},
 
 	levelLoaded: function() {
+		me.game.world.addChild(new GBGJ.BombDisplay());
+		this.player.setBombs(3);
 		me.game.world.addChild(new GBGJ.LevelDisplay({
 			level: this.nextLevel,
 		}));

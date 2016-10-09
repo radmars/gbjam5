@@ -14,7 +14,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.pos.z = 6;
 		this.moveSpeed = .1;
 		this.scrollSpeed = .01;
-		this.bombs = 3;
+		this.setBombs(3);
 		this.bombTimer = 0;
 
 		// floating point scroll distance.
@@ -43,6 +43,11 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.changeAnimation("idle");
 	},
 
+	setBombs: function(n) {
+		this.bombs = 3;
+		me.event.publish("somebody set us up the bomb", [this]);
+	},
+
 	tryToBomb: function(action, keyCode, edge) {
 		if(action == 'bomb' && this.bombs > 0 && this.bombTimer <= 0) {
 			var numChunks = 8;
@@ -60,7 +65,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			me.game.viewport.shake(3, 500);
 			this.bombTimer = 500;
 			this.bombs--;
-			me.event.publish("drop da bomb");
+			me.event.publish("drop da bomb", [this]);
 		}
 	},
 
