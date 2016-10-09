@@ -19,10 +19,12 @@
 			settings.height = settings.height || 32;
 			settings.framewidth = settings.framewidth || 32;
 			settings.frameheight =  settings.frameheight || 32;
+			settings.speed =  settings.speed || 1;
+
 			this._super(me.Entity, 'init', [x, y, settings]);
 			this.pos.z = 5;
 
-			this.body.setMaxVelocity(1, 1);
+			this.body.setMaxVelocity(settings.speed, settings.speed);
 			this.body.gravity = 0;
 
 			if(!settings.path) {
