@@ -65,7 +65,7 @@ GBGJ.Bullet = me.Entity.extend({
 		me.collision.check(this);
 		return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 	},
-	
+
 	die : function (response, other) {
 		var x = this.pos.x + (3).randomFloat(3);
 		var y = this.pos.y + (1).randomFloat(2);
@@ -79,19 +79,19 @@ GBGJ.Bullet = me.Entity.extend({
 				}
 			)
 		);
-		
+
 		// Bullets never respond to collisions other than with destruction.
 		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 		this.remove();
 	},
-	
+
 	onCollision : function (response, other) {
 		if(other.body.collisionType == me.collision.types.PLAYER_OBJECT) {
 			//other.damage();
 		}
-		
-		this.die();
-
+		if(other.body.collisionType != me.collision.types.COLLECTABLE_OBJECT) {
+			this.die();
+		}
 		return false;
 	}
 });
