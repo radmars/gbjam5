@@ -36,7 +36,7 @@
 			this.bombSub = me.event.subscribe("drop da bomb", this.checkBomb.bind(this));
 
 			this.renderable.addAnimation("idle", [0, 1, 2]);
-			this.renderable.addAnimation("hit", [3]);
+			this.renderable.addAnimation("hit", [3, 2]);
 			this.changeAnimation("idle");
 			this.hp=2;
 		},
@@ -115,7 +115,7 @@
 					~~(x),
 					~~(y),
 					{
-						speed: (0).randomFloat(1),
+						speed: (0).randomFloat(0.1),
 						dir: {
 							x: ca,
 							y: sa,

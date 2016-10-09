@@ -52,6 +52,30 @@ GBGJ.BombDebris = GBGJ.Particle.extend({
 	},
 });
 
+GBGJ.BulletExplode = GBGJ.Particle.extend({
+	init : function (x, y, settings) {
+		settings = settings || {};
+		settings.image = "explode_16";
+		settings.width = 16;
+		settings.height = 16;
+		settings.frameCount = 3;
+		this._super(GBGJ.Particle, 'init', [x, y, settings]);
+		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+	},
+});
+
+GBGJ.BigExplode = GBGJ.Particle.extend({
+	init : function (x, y, settings) {
+		settings = settings || {};
+		settings.image = "explode_32";
+		settings.width = 32;
+		settings.height = 32;
+		settings.frameCount = 5;
+		this._super(GBGJ.Particle, 'init', [x, y, settings]);
+		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+	},
+});
+
 GBGJ.BloodChunk = GBGJ.Particle.extend({
 	init : function (x, y, settings) {
 		settings = settings || {};

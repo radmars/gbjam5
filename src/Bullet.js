@@ -70,7 +70,20 @@ GBGJ.Bullet = me.Entity.extend({
 		if(other.body.collisionType == me.collision.types.PLAYER_OBJECT) {
 			//other.damage();
 		}
-
+		
+		var x = this.pos.x + (3).randomFloat(3);
+		var y = this.pos.y + (1).randomFloat(2);
+		me.game.world.addChild(
+			new GBGJ.BulletExplode(
+				~~(x),
+				~~(y),
+				{
+					speed: 0,
+					dir: { x: 0, y: 0, },
+				}
+			)
+		);
+		
 		// Bullets never respond to collisions other than with destruction.
 		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 		this.remove();

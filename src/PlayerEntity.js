@@ -148,15 +148,16 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			var angle = (0).randomFloat(Math.PI * 2);
 			var ca = Math.cos(angle);
 			var sa = Math.sin(angle);
+			
 			me.game.world.addChild(
-				new GBGJ.BloodChunk(
+				new GBGJ.BigExplode(
 					this.pos.x + ca * (1).random(4),
 					this.pos.y - 13 + sa * (1).random(4),
 					{
-						speed: (0).randomFloat(2),
+						speed: (0),
 						dir: {
-							x: ca,
-							y: sa,
+							x: 0,
+							y: 0,
 						},
 					}
 				)
