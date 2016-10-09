@@ -140,6 +140,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	},
 });
 
+// TODO Should be particle
 GBGJ.BombDebris = me.Entity.extend({
 		init : function (x, y, settings) {
 		settings = settings || {};
@@ -173,14 +174,8 @@ GBGJ.BombDebris = me.Entity.extend({
 		this.renderable.angle = Math.atan2(dir.y, dir.x);
 	},
 
-	onDeactivateEvent: function() {
-	},
-
 	update : function (dt) {
 		this.body.update(dt);
-		if(!me.game.viewport.isVisible(this)) {
-			me.game.world.removeChild(this);
-		}
 		return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 	},
 });
