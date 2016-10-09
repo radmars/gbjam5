@@ -29,7 +29,7 @@
  <objectgroup color="#ff0000" name="collision layer" opacity="0.79">
   <object id="33" x="0.666663" y="0" width="15.3333" height="144.5"/>
   <object id="56" x="16.8334" y="1" width="94.8333" height="30"/>
-  <object id="57" x="16.3333" y="31.5" width="30.8333" height="15"/>
+  <object id="57" x="5.5" y="11.75" width="41.6666" height="34.75"/>
   <object id="59" x="16.9584" y="112.75" width="94.3333" height="31"/>
   <object id="60" x="16.2083" y="96.75" width="30.8333" height="15"/>
   <object id="79" x="208.083" y="128" width="47.3333" height="15"/>
