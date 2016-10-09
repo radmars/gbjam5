@@ -86,6 +86,52 @@ GBGJ.onload = function() {
 		 me.pool.register(type, GBGJ[type], true);
 	});
 
+	var inputs = {
+		left:  {
+			keys: [me.input.KEY.LEFT, me.input.KEY.A],
+			pad:  [me.input.GAMEPAD.BUTTONS.LEFT],
+		},
+		right: {
+			keys: [me.input.KEY.RIGHT, me.input.KEY.D],
+			pad:  [me.input.GAMEPAD.BUTTONS.RIGHT],
+		},
+		up: {
+			keys: [me.input.KEY.UP, me.input.KEY.W],
+			pad:  [me.input.GAMEPAD.BUTTONS.UP],
+		},
+		down: {
+			keys: [me.input.KEY.DOWN, me.input.KEY.S],
+			pad:  [me.input.GAMEPAD.BUTTONS.DOWN],
+		},
+		shoot: {
+			keys: [me.input.KEY.SPACE, me.input.KEY.J],
+			pad:  [me.input.GAMEPAD.BUTTONS.FACE_1],
+		},
+		bomb: {
+			keys: [me.input.KEY.K],
+			pad:  [me.input.GAMEPAD.BUTTONS.FACE_2],
+		},
+		start: {
+			keys: [me.input.KEY.ENTER],
+			pad:  [me.input.GAMEPAD.BUTTONS.START],
+		},
+		select: {
+			keys: [me.input.KEY.SHIFT],
+			pad:  [me.input.GAMEPAD.BUTTONS.SELECT],
+		},
+	};
+
+	Object.keys(inputs).forEach(function(k) {
+		inputs[k].keys.forEach(function(code) {
+			me.input.bindKey(code, k);
+		})
+		if(me.input.GAMEPAD) {
+			inputs[k].pad.forEach(function(code) {
+				me.input.bindGamepad(0, {type: 'buttons', code: code}, inputs[k].keys[0]);
+			});
+		}
+	});
+
 	me.loader.preload( GBGJ.GameResources, GBGJ.loaded.bind(GBGJ), false );
 	me.state.change(GBGJ.states.Loading);
 };

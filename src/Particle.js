@@ -48,7 +48,7 @@ GBGJ.BombDebris = GBGJ.Particle.extend({
 		settings.height = 16;
 		settings.speed = 5;
 		settings.frameCount = 4;
-		this._super(GBGJ.particle, 'init', [x, y, settings]);
+		this._super(GBGJ.Particle, 'init', [x, y, settings]);
 	},
 });
 
