@@ -1,6 +1,6 @@
 "use strict";
 
-GBGJ.RadmarsScreen = me.ScreenObject.extend({
+GBGJ.IntroScreen = me.ScreenObject.extend({
 	init: function() {
 		this._super(me.ScreenObject, 'init', []);
 	},
@@ -17,7 +17,7 @@ GBGJ.RadmarsScreen = me.ScreenObject.extend({
 
 	keyHandler: function (action, keyCode, edge) {
 		if( keyCode === me.input.KEY.ENTER ) {
-			me.state.change( me.state.PLAY);
+			me.state.change( GBGJ.states.Controls );
 		}
 	},
 
@@ -70,8 +70,6 @@ GBGJ.RadmarsRenderable = me.Renderable.extend({
 		this.text_mars.anchorPoint.set(0, 0);
 		this.text_radmars1.anchorPoint.set(0, 0);
 		this.text_radmars2.anchorPoint.set(0, 0);
-
-		me.input.bindKey( me.input.KEY.ENTER, "enter", true );
 	},
 
 	getMarsText: function() {
@@ -105,7 +103,7 @@ GBGJ.RadmarsRenderable = me.Renderable.extend({
 			this.counter++;
 		}
 		else{
-			//me.state.change(me.state.PLAY);
+			me.state.change(GBGJ.states.Controls);
 		}
 		// Have to force redraw for the flashing of the shades and text.
 		me.game.repaint();

@@ -11,8 +11,7 @@
 		},
 		onCollision : function (response, other) {
 			if(other.body.collisionType == me.collision.types.PLAYER_OBJECT){
-				me.state.current().setNextLevel(this.nextLevel);
-				me.state.current().loadNextLevel();
+				me.state.current().goToNextLevel(this.nextLevel);
 			}
 			return false;
 		},

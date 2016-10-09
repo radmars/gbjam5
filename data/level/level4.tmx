@@ -25,9 +25,9 @@
   <object id="13" name="Path" type="EnemyBoomer" x="209.333" y="109.333">
    <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
   </object>
-  <object id="15" name="SkullBoss" x="525.455" y="17.0909" width="72" height="72">
+  <object id="15" name="FinalBoss" x="527.455" y="-0.181818" width="80" height="176">
    <properties>
-    <property name="nextLevel" value="level3"/>
+    <property name="nextLevel" value="level1"/>
    </properties>
   </object>
   <object id="37" name="Path" type="EnemyShooter" x="568" y="41">

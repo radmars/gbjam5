@@ -53,6 +53,13 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("intro_radmars2"),
 		_Audio("radboy"),
 
+		// control screen
+		GBGJ.Image("controls"),
+		GBGJ.Image("pressstart"),
+
+		// title screen
+		GBGJ.Image("title"),
+
 		// entities
 		GBGJ.Image("player"),
 		GBGJ.Image("enemy1"),
@@ -60,14 +67,18 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("enemy3"),
 		GBGJ.Image("enemy4"),
 		GBGJ.Image("enemy5"),
-		GBGJ.Image("boss"),
 		GBGJ.Image("bullet"),
+		GBGJ.Image("handboss"),
+		GBGJ.Image("skullboss"),
+		GBGJ.Image("finalboss"),
 
 		// levels
 		GBGJ.Image("bio_bg"),
 		GBGJ.Image("tilemap"),
 		_Level("level1"),
 		_Level("level2"),
+		_Level("level3"),
+		_Level("level4"),
 	];
 
 	return GameResources;
