@@ -26,7 +26,7 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 			down:  [me.input.KEY.DOWN, me.input.KEY.S],
 
 			shoot: [me.input.KEY.SPACE, me.input.KEY.J],
-			bomb:  [me.input.KEY.K, me.input.KEY.SHIFT],
+			bomb:  [me.input.KEY.K],
 			OK:    [me.input.KEY.ENTER],
 		};
 
