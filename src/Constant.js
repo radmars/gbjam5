@@ -7,6 +7,8 @@ GBGJ.Constant = {
 		fast: 1,
 	},
 	cooldown: {
-		long: 1000,
+		long: 3000,
+		medium: 2000,
+		short: 1000,
 	},
 };

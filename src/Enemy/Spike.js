@@ -14,7 +14,7 @@
 				speed: GBGJ.Constant.speed.slow,
 			};
 			this.cooldown = {
-				shoot: GBGJ.Constant.cooldown.long,
+				shoot: GBGJ.Constant.cooldown.medium,
 			};
 			this.cooldown_remaining = {
 				shoot: 0,
