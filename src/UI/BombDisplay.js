@@ -13,7 +13,6 @@ GBGJ.BombDisplay = me.Renderable.extend({
 		);
 		this.floating = true;
 		this.pos.z = 20;
-		this.bombDrop = me.event.subscribe("drop da bomb", this.updateBombs.bind(this));
 		this.bombGet = me.event.subscribe('somebody set us up the bomb', this.updateBombs.bind(this));
 	},
 
@@ -24,7 +23,6 @@ GBGJ.BombDisplay = me.Renderable.extend({
 	},
 
 	onDeactivateEvent: function() {
-		me.event.unsubscribe(this.bombDrop);
 		me.event.subscribe(this.bombGet);
 	},
 
