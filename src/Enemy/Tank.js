@@ -11,5 +11,10 @@
 
 			this._super(GBGJ.Enemy, 'init', [x, y, settings]);
 		},
+
+		chooseDirection: function() {
+			// Always move in the direction of the player.
+			return new me.Vector2d(this.speed, 0).rotate(this.angleToPlayer());
+		},
 	});
 })();
