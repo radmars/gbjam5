@@ -25,17 +25,17 @@ GBGJ.LevelDisplay = me.Renderable.extend({
 				text = "FACILITY ENTRANCE"; 
 				break;
 			case "level3":
-				text = "FACILITY"; 
+				text = "ORBITAL SHIPYARD"; 
 				break;
 			case "level4":
 				text = "CORRUPTED CORE"; 
 				break;	
 			case "level5":
-				text = "LAIR OF THE TAINTED GOD"; 
+				text = "PILLAR OF CREATION"; 
 				break;	
 		}
 		
-		GBGJ.font.draw(renderer, text, screenWidth / 2 - this.width / 2-30, screenHeight / 2 - this.height / 2);
+		GBGJ.font.draw(renderer, text, screenWidth / 2 - this.width / 2-36, screenHeight / 2 - this.height / 2);
 		renderer.setColor(GBGJ.white);
 	},
 
