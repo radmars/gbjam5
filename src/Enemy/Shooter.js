@@ -6,7 +6,7 @@
 			settings = settings || {};
 			settings.image = 'enemy1';
 			settings.shapes = [ new me.Rect( 0, 0, 24, 18) ];
-			settings.speed = 0.4;
+			settings.speed = GBGJ.Constant.speed.medium;
 			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
 		},
 	});

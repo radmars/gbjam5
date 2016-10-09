@@ -41,7 +41,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	tryToShoot: function(action, keyCode, edge) {
 		if(action == 'shoot' && this.shootTimer <= 0) {
 			this.shootTimer = 400;
-			var bullet = new GBGJ.Bullet(this.pos.x, this.pos.y, {
+			var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
 				dir: {
 					x: 1,
 					y: 0,

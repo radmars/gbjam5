@@ -62,6 +62,7 @@ GBGJ.GameResources = (function() {
 		GBGJ.Image("enemy5"),
 		GBGJ.Image("boss"),
 		GBGJ.Image("bullet"),
+		GBGJ.Image("bullet_baddie_small"),
 
 		// levels
 		GBGJ.Image("bio_bg"),

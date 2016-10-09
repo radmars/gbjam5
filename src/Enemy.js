@@ -66,6 +66,22 @@
 			return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
 		},
 
+		shoot: function(args) {
+			args = args || {};
+
+			var type = args.type || this.bullet.type;
+			var speed = args.speed || this.bullet.speed;
+			var angle = args.angle || 0;
+			var x = args.x || this.pos.x;
+			var y = args.y || this.pos.y;
+
+			var bullet = me.pool.pull(type, x, y, {
+				// Default to straight left
+				dir : (new me.Vector2d(speed, 0)).rotate(Math.PI),
+			});
+			me.game.world.addChild(bullet, bullet.pos.z);
+		},
+
 		changeAnimation: function(dest, next) {
 			if(!this.renderable.isCurrentAnimation(dest)) {
 				if(next) {
