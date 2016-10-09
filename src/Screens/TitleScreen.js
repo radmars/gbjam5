@@ -14,6 +14,9 @@ GBGJ.TitleScreen = me.ScreenObject.extend({
 		if( keyCode === me.input.KEY.ENTER ) {
 			me.state.change( GBGJ.states.Play);
 		}
+		if( keyCode === me.input.KEY.SHIFT ) {
+			me.state.change(GBGJ.states.Credits);
+		}
 	},
 	onDestroyEvent: function() {
 		me.event.unsubscribe(this.subscription);
