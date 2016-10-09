@@ -5,37 +5,35 @@ GBGJ.LevelDisplay = me.Renderable.extend({
 		this._super(me.Renderable, 'init', [0, 0, 10, 10]);
 		this.level = settings.level;
 		this.floating = true;
-		this.time = 4500;
+		this.time = 2500;
 		this.pos.z = 20;
-		this.width = GBGJ.font.measureText("OMG: " + this.level.toUpperCase()).width;
 	},
 
 	draw: function(renderer) {
 		var screenWidth = renderer.getWidth();
 		var screenHeight = renderer.getHeight();
 		renderer.setColor(GBGJ.black);
-		renderer.fillRect(0, screenHeight / 2 - 6, screenWidth, 10);
-		
-		var text = "UNKNOWN AREA"; 
-		switch( this.level){
+		renderer.fillRect(0, screenHeight / 2 - 5, screenWidth, 10);
+
+		var text = "UNKNOWN AREA";
+		switch(this.level){
 			case "level1":
-				text = "SPACEMARS ORBIT"; 
+				text = "SPACEMARS ORBIT";
 				break;
 			case "level2":
-				text = "FACILITY ENTRANCE"; 
+				text = "FACILITY ENTRANCE";
 				break;
 			case "level3":
-				text = "ORBITAL SHIPYARD"; 
+				text = "ORBITAL SHIPYARD";
 				break;
 			case "level4":
-				text = "CORRUPTED CORE"; 
-				break;	
+				text = "CORRUPTED CORE";
+				break;
 			case "level5":
-				text = "PILLAR OF CREATION"; 
-				break;	
+				text = "PILLAR OF CREATION";
+				break;
 		}
-		
-		GBGJ.font.draw(renderer, text, screenWidth / 2 - this.width / 2-36, screenHeight / 2 - this.height / 2);
+		GBGJ.font.draw(renderer, text, screenWidth / 2 - (text.length * 8 / 2), screenHeight / 2 - 4);
 		renderer.setColor(GBGJ.white);
 	},
 
