@@ -96,6 +96,30 @@ GBGJ.GameResources = (function() {
 		_Level("level4"),
 		_Level("level5"),
 		_Level("test"),
+
+		_Audio("gbjam5-1"),
+		_Audio("gbjam5-2"),
+		_Audio("gbjam5-3"),
+		_Audio("gbjam5-finalboss"),
+		_Audio("gbjam5-gameover"),
+		_Audio("gbjam5-title"),
+		_Audio("gbjam5-win"),
+
+		_Audio("bomb"),
+		_Audio("boss1death"),
+		_Audio("boss2death"),
+		_Audio("enemy1death"),
+		_Audio("enemy2death"),
+		_Audio("enemy3death"),
+		_Audio("enemyshoot"),
+		_Audio("explosion"),
+		_Audio("explosion2"),
+		_Audio("finalbossdeath"),
+		_Audio("hit"),
+		_Audio("missile"),
+		_Audio("playerdeath"),
+		_Audio("playershoot"),
+		_Audio("powerup"),
 	];
 
 	return GameResources;
