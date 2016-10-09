@@ -17,7 +17,7 @@
 				shoot: GBGJ.Constant.cooldown.long,
 			};
 			this.cooldown_remaining = {
-				shoot: 0,
+				shoot: GBGJ.Constant.offset.medium,
 			};
 
 			this._super(GBGJ.Enemy, 'init', [x, y, settings]);

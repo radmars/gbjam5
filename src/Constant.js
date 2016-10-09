@@ -11,4 +11,9 @@ GBGJ.Constant = {
 		medium: 2000,
 		short: 1000,
 	},
+	offset: {
+		short: 300,
+		// This is the delay used between an enemy appearing on screen and firing for the first time.
+		medium: 600,
+	},
 };
