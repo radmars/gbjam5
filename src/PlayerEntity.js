@@ -13,11 +13,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
 
-		// dt (as passed by update()) looks to be 16.6666, and we truncate the
-		// decimal component off each update so as to achive pixel snapping.  As a
-		// result, we want moveSpeed * dt to be _slightly_ higher than an integer,
-		// or else we'll move faster up than we do down.
-		this.moveSpeed = .12;
+		this.moveSpeed = GBGJ.Constant.player_speed.normal;
 		this.scrollSpeed = parseFloat(GBGJ.data.options.speed_hack || "0.0") + 0.0125;
 
 		this.setBombs(3);
@@ -89,12 +85,14 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	startShooting: function(action, keyCode, edge) {
 		if (action === 'shoot') {
 			this.shooting = true;
+			this.moveSpeed = GBGJ.Constant.player_speed.shooting;
 		}
 	},
 
 	stopShooting: function(action, keyCode, edge) {
 		if (action === 'shoot') {
 			this.shooting = false;
+			this.moveSpeed = GBGJ.Constant.player_speed.normal;
 		}
 	},
 
