@@ -1,7 +1,7 @@
 "use strict";
 
 (function() {
-	GBGJ.EnemySpike = GBGJ.BaseEnemyEntity.extend({
+	GBGJ.EnemySpike = GBGJ.Enemy.extend({
 		init: function(x, y, settings) {
 			settings = settings || {};
 			settings.image = 'enemy3';
@@ -21,7 +21,7 @@
 			
 			this.shots =2;
 			
-			this._super(GBGJ.BaseEnemyEntity, 'init', [x, y, settings]);
+			this._super(GBGJ.Enemy, 'init', [x, y, settings]);
 		},
 
 		update: function(dt) {
@@ -32,7 +32,7 @@
 				this.cooldown_remaining.shoot = this.cooldown.shoot;
 			}
 
-			return (this._super(GBGJ.BaseEnemyEntity, 'update', [dt]));
+			return (this._super(GBGJ.Enemy, 'update', [dt]));
 		},
 	});
 })();
