@@ -17,7 +17,7 @@
  <objectgroup name="entities" offsetx="0.5" offsety="0">
   <object id="1" name="Player" x="24.5" y="64" width="16" height="16"/>
   <object id="118" name="Path" type="EnemyBasic" x="86.3185" y="73.3333">
-   <polyline points="9.5148,-24.3333 -38.0682,-24.5"/>
+   <polyline points="-37.4852,-25 25.5985,-25.5"/>
   </object>
   <object id="119" name="Path" type="EnemySpike" x="65.9167" y="141.333">
    <polyline points="69.5609,-30.6899 60.4716,-62.2414 48.7635,-29.7074 39.0129,-61.4241"/>
