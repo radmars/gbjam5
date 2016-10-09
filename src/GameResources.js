@@ -90,6 +90,7 @@ GBGJ.GameResources = (function() {
 		_Level("level2"),
 		_Level("level3"),
 		_Level("level4"),
+		_Level("test"),
 	];
 
 	return GameResources;
