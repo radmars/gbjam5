@@ -60,6 +60,10 @@ GBGJ.GameResources = (function() {
 		// title screen
 		GBGJ.Image("title"),
 
+		//GameOver
+		GBGJ.Image("gameover"),
+		GBGJ.Image("gamewin"),
+
 		// entities
 		GBGJ.Image("player"),
 		GBGJ.Image("enemy1"),

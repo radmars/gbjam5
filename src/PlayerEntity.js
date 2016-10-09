@@ -13,7 +13,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
 		this.moveSpeed = .1;
-		this.scrollSpeed = (GBGJ.data.options.speed_hack || 0) + 0.01;
+		this.scrollSpeed = parseFloat(GBGJ.data.options.speed_hack || "0.0") + 0.01;
 		this.setBombs(3);
 		this.bombTimer = 0;
 
@@ -136,7 +136,41 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		return true;
 	},
 
+	die: function() {
+		me.game.world.removeChild(this);
+
+		me.game.viewport.shake(5, 1000, me.game.viewport.AXIS.BOTH, function() {
+			me.state.change(GBGJ.states.GameOver);
+		});
+
+		var numChunks = (1).random(4);
+		for(var i = 0; i < numChunks; i++) {
+			var angle = (0).randomFloat(Math.PI * 2);
+			var ca = Math.cos(angle);
+			var sa = Math.sin(angle);
+			me.game.world.addChild(
+				new GBGJ.BloodChunk(
+					this.pos.x + ca * (1).random(4),
+					this.pos.y - 13 + sa * (1).random(4),
+					{
+						speed: (0).randomFloat(2),
+						dir: {
+							x: ca,
+							y: sa,
+						},
+					}
+				)
+			);
+		}
+	},
+
 	onCollision : function (response, other) {
+		if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
+			this.die();
+		}
+		if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
+			this.die();
+		}
 		return true;
 	},
 });

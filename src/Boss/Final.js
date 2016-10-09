@@ -12,4 +12,7 @@ GBGJ.FinalBoss = GBGJ.Boss.extend({
 		this.renderable.addAnimation("die", [0, 4]);
 		this.changeAnimation("idle");
 	},
+	die: function() {
+		me.state.change(GBGJ.states.Win);
+	},
 });
