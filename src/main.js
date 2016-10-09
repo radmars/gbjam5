@@ -143,6 +143,8 @@ GBGJ.states = {
 	Title:    3 + me.state.USER,
 	Controls: 4 + me.state.USER,
 	Credits:  5 + me.state.USER,
+	Win:      6 + me.state.USER,
+	GameOver: 7 + me.state.USER,
 };
 
 GBGJ.loaded = function() {
