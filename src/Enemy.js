@@ -71,13 +71,13 @@
 
 			var type = args.type || this.bullet.type;
 			var speed = args.speed || this.bullet.speed;
-			var angle = args.angle || 0;
+			var angle = args.angle || Math.PI;
 			var x = args.x || this.pos.x;
 			var y = args.y || this.pos.y;
 
 			var bullet = me.pool.pull(type, x, y, {
 				// Default to straight left
-				dir : (new me.Vector2d(speed, 0)).rotate(Math.PI),
+				dir : (new me.Vector2d(speed, 0)).rotate(angle),
 			});
 			me.game.world.addChild(bullet, bullet.pos.z);
 		},
@@ -102,6 +102,14 @@
 				return false;
 			}
 			return true;
-		}
+		},
+
+		getPlayer: function () {
+			return me.state.current().player;
+		},
+
+		angleToPlayer: function() {
+			return this.angleTo(this.getPlayer());
+		},
 	});
 })();

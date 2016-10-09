@@ -22,7 +22,9 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.cameraTargetPos = new me.Vector2d(this.pos.x, this.pos.y);
 
 		me.game.viewport.follow(this.cameraTargetPos, me.game.viewport.AXIS.BOTH);
+		me.state.current().player = this; // Probably a better way to expose this, but I don't know it yet.
 		me.game.viewport.setDeadzone(10,10);
+
 		this.alwaysUpdate = true;
 		this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 		this.body.setMaxVelocity(0, 0);

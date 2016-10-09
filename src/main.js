@@ -81,6 +81,7 @@ GBGJ.onload = function() {
 		"EnemyTank",
 		"BulletPlayer",
 		"BulletSpike",
+		"BulletShooter",
 	 ].forEach(function(type) {
 		 me.pool.register(type, GBGJ[type], true);
 	});
