@@ -68,6 +68,7 @@ GBGJ.onload = function() {
 
 	me.pool.register("Player", GBGJ.PlayerEntity);
 	[
+		"Bomb",
 		"Boss",
 		"Path",
 		"LevelChanger",
