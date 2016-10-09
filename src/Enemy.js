@@ -8,7 +8,7 @@
 			this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 
 			var enemy = me.pool.pull(settings.type, this.points[0].x, this.points[0].y, {path: this});
-			me.state.current().addEnemy(enemy);
+			me.game.world.addChild(enemy);
 		},
 	});
 
@@ -33,9 +33,21 @@
 			this.path = settings.path;
 			this.currentPoint = 0;
 
+			this.bombSub = me.event.subscribe("drop da bomb", this.checkBomb.bind(this));
+
 			this.renderable.addAnimation("idle", [0, 1, 2]);
 			this.renderable.addAnimation("hit", [2]);
 			this.changeAnimation("idle");
+		},
+
+		onDeactivateEvent: function() {
+			me.event.unsubscribe(this.bombSub);
+		},
+
+		checkBomb: function() {
+			if(me.game.viewport.isVisible(this)) {
+				this.die();
+			}
 		},
 
 		update : function (dt) {
@@ -92,7 +104,7 @@
 		},
 
 		die: function() {
-			me.state.current().removeEnemy(this);
+			me.game.world.removeChild(this);
 		},
 
 		onCollision : function (response, other) {

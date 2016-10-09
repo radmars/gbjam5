@@ -15,40 +15,9 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		this.loadNextLevel()
 	},
 
-	addBullet: function(b) {
-		this.allBullets.push(b);
-		me.game.world.addChild(b, b.pos.z);
-	},
-
-	removeBullet: function(b) {
-		this.allBullets.remove(b);
-		me.game.world.removeChild(b);
-	},
-
-	getBullets: function() {
-		return this.allBullets;
-	},
-
-	addEnemy: function(e) {
-		this.allEnemies.push(e);
-		me.game.world.addChild(e);
-	},
-
-	removeEnemy: function(e) {
-		this.allEnemies.remove(e);
-		me.game.world.removeChild(e);
-	},
-
-	getEnemies: function() {
-		return this.allEnemies;
-	},
-
 	onResetEvent: function() {
 		me.game.world.autoSort = true;
 		me.game.world.autoDepth = false;
-
-		this.allBullets = [];
-		this.allEnemies = [];
 
 		var keys = {
 			left:  [me.input.KEY.LEFT, me.input.KEY.A],

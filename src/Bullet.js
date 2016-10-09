@@ -18,6 +18,19 @@ GBGJ.Bullet = me.Entity.extend({
 		this.body.gravity = 0;
 		this.setDirection(settings.dir);
 		this.setMask(settings.hurts);
+
+		this.bombSub = me.event.subscribe("drop da bomb", this.checkBomb.bind(this));
+
+	},
+
+	checkBomb: function() {
+		if(me.game.viewport.isVisible(this)) {
+			this.remove();
+		}
+	},
+
+	onDeactivateEvent: function() {
+		me.event.unsubscribe(this.bombSub);
 	},
 
 	setMask: function(add) {
@@ -35,15 +48,12 @@ GBGJ.Bullet = me.Entity.extend({
 		this.renderable.angle = Math.atan2(dir.y, dir.x);
 	},
 
-	onDeactivateEvent: function() {
-	},
-
 	add: function() {
-		me.state.current().addBullet(this);
+		me.game.world.addChild(this);
 	},
 
 	remove: function() {
-		me.state.current().removeBullet(this);
+		me.game.world.removeChild(this);
 	},
 
 	update : function (dt) {

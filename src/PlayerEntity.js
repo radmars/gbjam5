@@ -60,14 +60,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			me.game.viewport.shake(3, 500);
 			this.bombTimer = 500;
 			this.bombs--;
-			me.state.current().getBullets().slice().forEach(function(b) {
-				b.remove();
-			});
-			me.state.current().getEnemies().slice().forEach(function(e) {
-				if(me.game.viewport.isVisible(e)) {
-					e.die();
-				}
-			});
+			me.event.publish("drop da bomb");
 		}
 	},
 
