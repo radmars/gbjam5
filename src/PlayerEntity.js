@@ -8,7 +8,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		settings.height = 32;
 		settings.frameheight = 32;
 		settings.framewidth = 32;
-		settings.shapes = [ new me.Rect(0, 0, 16, 16) ]
+		settings.shapes = [ new me.Rect(0, 0, 8, 8) ]
 
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
