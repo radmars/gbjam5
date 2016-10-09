@@ -106,14 +106,6 @@ GBGJ.onload = function() {
 			keys: [me.input.KEY.DOWN, me.input.KEY.S],
 			pad:  [me.input.GAMEPAD.BUTTONS.DOWN],
 		},
-		shoot: {
-			keys: [me.input.KEY.SPACE, me.input.KEY.J],
-			pad:  [me.input.GAMEPAD.BUTTONS.FACE_1],
-		},
-		bomb: {
-			keys: [me.input.KEY.K],
-			pad:  [me.input.GAMEPAD.BUTTONS.FACE_2],
-		},
 		start: {
 			keys: [me.input.KEY.ENTER],
 			pad:  [me.input.GAMEPAD.BUTTONS.START],
@@ -131,6 +123,28 @@ GBGJ.onload = function() {
 		if(me.input.GAMEPAD) {
 			inputs[k].pad.forEach(function(code) {
 				me.input.bindGamepad(0, {type: 'buttons', code: code}, inputs[k].keys[0]);
+			});
+		}
+	});
+
+	var toggles = {
+		shoot: {
+			keys: [me.input.KEY.SPACE, me.input.KEY.J],
+			pad:  [me.input.GAMEPAD.BUTTONS.FACE_1],
+		},
+		bomb: {
+			keys: [me.input.KEY.K],
+			pad:  [me.input.GAMEPAD.BUTTONS.FACE_2],
+		},
+	};
+
+	Object.keys(toggles).forEach(function(k) {
+		toggles[k].keys.forEach(function(code) {
+			me.input.bindKey(code, k, true);
+		})
+		if(me.input.GAMEPAD) {
+			toggles[k].pad.forEach(function(code) {
+				me.input.bindGamepad(0, {type: 'buttons', code: code}, toggles[k].keys[0]);
 			});
 		}
 	});

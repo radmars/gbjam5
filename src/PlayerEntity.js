@@ -39,7 +39,8 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.body.setFriction(0, 0);
 		this.body.gravity = 0;
 
-		this.shootSub = me.event.subscribe(me.event.KEYDOWN, this.tryToShoot.bind(this));
+		this.shootStart = me.event.subscribe(me.event.KEYDOWN, this.startShooting.bind(this));
+		this.shootStop = me.event.subscribe(me.event.KEYUP, this.stopShooting.bind(this));
 		this.bombSub = me.event.subscribe(me.event.KEYDOWN, this.tryToBomb.bind(this));
 		this.shootTimer = 0;
 
@@ -85,14 +86,25 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		}
 	},
 
+	startShooting: function(action, keyCode, edge) {
+		if (action === 'shoot') {
+			this.shooting = true;
+		}
+	},
 
-	tryToShoot: function(action, keyCode, edge) {
-		if(action == 'shoot' && this.shootTimer <= 0) {
+	stopShooting: function(action, keyCode, edge) {
+		if (action === 'shoot') {
+			this.shooting = false;
+		}
+	},
+
+	tryToShoot: function() {
+		if (this.shootTimer <= 0) {
 			switch( this.weapon ){
 				case "shotgun":
 					this.shootTimer = 250;
 					this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
-					
+
 					var bullet = new GBGJ.BulletPlayerBig(this.pos.x, this.pos.y-6, {
 						dir: { x: 1, y: 0, }
 					});
@@ -118,8 +130,6 @@ GBGJ.PlayerEntity = me.Entity.extend({
 					this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
 					break;
 			}
-			
-			
 		}
 	},
 
@@ -133,7 +143,8 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	},
 
 	onDeactivateEvent: function() {
-		me.event.unsubscribe(this.shootSub);
+		me.event.unsubscribe(this.shootStart);
+		me.event.unsubscribe(this.shootStop);
 		me.event.unsubscribe(this.bombSub);
 	},
 
@@ -141,6 +152,9 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.shootTimer = Math.max(0, this.shootTimer - dt);
 		this.bombTimer = Math.max(0, this.bombTimer- dt);
 
+		if (this.shooting) {
+			this.tryToShoot();
+		}
 		if(me.input.isKeyPressed('right')) {
 			this.screenOffset -= this.moveSpeed * dt;
 		}
