@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="90" height="11" tilewidth="16" tileheight="16" nextobjectid="262">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="90" height="11" tilewidth="16" tileheight="16" nextobjectid="267">
  <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="256" columns="16">
   <image source="../image/tilemap.png" width="256" height="256"/>
  </tileset>
  <imagelayer name="Parallax_layer1">
-  <image source="../image/bg_stars.png" width="320" height="144"/>
+  <image source="../image/bg_stars.png" width="144" height="144"/>
   <properties>
    <property name="ratio" value="0.75"/>
   </properties>
@@ -262,9 +262,6 @@
   <object id="220" name="Path" type="EnemyBasic" x="985.5" y="66.5">
    <polyline points="0,0 -25,0"/>
   </object>
-  <object id="221" name="Path" type="EnemyBasic" x="1023" y="90.5">
-   <polyline points="0,0 -25,0"/>
-  </object>
   <object id="222" name="Path" type="EnemyBasic" x="998" y="112.5">
    <polyline points="0,0 -25,0"/>
   </object>
@@ -343,6 +340,8 @@
   <object id="258" name="Path" type="EnemyBasic" x="919" y="52.5">
    <polyline points="0,0 -25,0"/>
   </object>
+  <object id="262" name="Bomb" x="772.667" y="69"/>
+  <object id="266" name="Bomb" x="1012.67" y="86.3333"/>
  </objectgroup>
  <layer name="edge tiles" width="90" height="11">
   <data encoding="base64">
@@ -353,23 +352,23 @@
   <object id="16" x="0" y="0" width="1442" height="16"/>
   <object id="17" x="0" y="160" width="1438" height="16"/>
   <object id="33" x="0.666663" y="0" width="15.3333" height="176"/>
-  <object id="40" x="690.333" y="111.5" width="59.6667" height="65.5"/>
-  <object id="41" x="431.167" y="-19.75" width="95.3333" height="48.25"/>
-  <object id="42" x="657.167" y="140.875" width="39.8333" height="52.125"/>
-  <object id="43" x="945.583" y="125.5" width="107.917" height="46"/>
-  <object id="153" x="720.083" y="93.9375" width="46.9167" height="106.062"/>
-  <object id="154" x="946.042" y="-1" width="107.917" height="46"/>
-  <object id="155" x="1086.04" y="-15.5" width="33.9585" height="46"/>
-  <object id="156" x="1088.02" y="141" width="33.9585" height="46"/>
-  <object id="157" x="1152.52" y="142" width="33.9585" height="46"/>
-  <object id="158" x="1149.52" y="-17" width="33.9585" height="46"/>
-  <object id="159" x="1215.52" y="-17.5" width="33.9585" height="46"/>
-  <object id="160" x="1215.52" y="140" width="33.9585" height="46"/>
-  <object id="161" x="1344.02" y="125" width="103.979" height="46"/>
-  <object id="162" x="1345.02" y="-1" width="112.979" height="46"/>
-  <object id="163" x="1247.52" y="-21.5" width="33.9585" height="67"/>
-  <object id="164" x="1247.02" y="124" width="33.9585" height="67"/>
-  <object id="260" x="767.833" y="-20.625" width="46.6667" height="48.25"/>
-  <object id="261" x="751.167" y="142.375" width="46.6667" height="48.25"/>
+  <object id="40" x="690.333" y="111.5" width="27.667" height="46.8333"/>
+  <object id="41" x="432.167" y="17.3333" width="95.3333" height="15"/>
+  <object id="42" x="656.5" y="144" width="30.4997" height="15.6667"/>
+  <object id="43" x="945.583" y="125.5" width="107.917" height="32.5"/>
+  <object id="153" x="720.083" y="93.9375" width="46.9167" height="63.3958"/>
+  <object id="154" x="946.042" y="17.3333" width="107.917" height="27.6667"/>
+  <object id="155" x="1086.04" y="17" width="33.9585" height="13.5"/>
+  <object id="156" x="1088.02" y="144.333" width="31.98" height="14.3333"/>
+  <object id="157" x="1152.52" y="144.333" width="31.1467" height="14.3333"/>
+  <object id="158" x="1150.85" y="17" width="33.9585" height="13.6667"/>
+  <object id="159" x="1216.19" y="17.3333" width="30.1467" height="14.5"/>
+  <object id="160" x="1215.52" y="143" width="31.1467" height="15.3333"/>
+  <object id="161" x="1344.02" y="125" width="95.3133" height="33.3333"/>
+  <object id="162" x="1345.02" y="17" width="96.6467" height="28"/>
+  <object id="163" x="1247.52" y="17" width="33.9585" height="28.5"/>
+  <object id="164" x="1247.02" y="127" width="33.9585" height="31"/>
+  <object id="260" x="768.166" y="17" width="46.6667" height="15.2917"/>
+  <object id="261" x="768.667" y="142.375" width="29.167" height="15.9583"/>
  </objectgroup>
 </map>

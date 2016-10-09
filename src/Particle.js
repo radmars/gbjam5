@@ -61,6 +61,9 @@ GBGJ.BulletExplode = GBGJ.Particle.extend({
 		settings.frameCount = 3;
 		this._super(GBGJ.Particle, 'init', [x, y, settings]);
 		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
+		
+		var a = Math.round( Math.random()*3 )*90;
+		this.renderable.angle = a;
 	},
 });
 
