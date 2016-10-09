@@ -13,7 +13,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this._super(me.Entity, 'init', [x, y, settings]);
 		this.pos.z = 6;
 
-		this.moveSpeed = GBGJ.Constant.player_speed.normal;
+		this.moveSpeed = GBGJ.Constant.player.speed.normal;
 		this.scrollSpeed = parseFloat(GBGJ.data.options.speed_hack || "0.0") + 0.0125;
 
 		this.setBombs(3);
@@ -85,14 +85,14 @@ GBGJ.PlayerEntity = me.Entity.extend({
 	startShooting: function(action, keyCode, edge) {
 		if (action === 'shoot') {
 			this.shooting = true;
-			this.moveSpeed = GBGJ.Constant.player_speed.shooting;
+			this.moveSpeed = GBGJ.Constant.player.speed.shooting;
 		}
 	},
 
 	stopShooting: function(action, keyCode, edge) {
 		if (action === 'shoot') {
 			this.shooting = false;
-			this.moveSpeed = GBGJ.Constant.player_speed.normal;
+			this.moveSpeed = GBGJ.Constant.player.speed.normal;
 		}
 	},
 
@@ -100,7 +100,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		if (this.shootTimer <= 0) {
 			switch( this.weapon ){
 				case "shotgun":
-					this.shootTimer = 250;
+					this.shootTimer = GBGJ.Constant.player.cooldown.shotgun;
 					this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
 
 					var bullet = new GBGJ.BulletPlayerBig(this.pos.x, this.pos.y-6, {
@@ -117,7 +117,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 					bullet.add();
 					break;
 				default:
-					this.shootTimer = 150;
+					this.shootTimer = GBGJ.Constant.player.cooldown.normal;
 					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
 						dir: {
 							x: 1,
