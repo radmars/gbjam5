@@ -166,5 +166,5 @@ GBGJ.states = {
 
 GBGJ.loaded = function() {
 	console.log("Loaded all assets");
-	me.state.change(GBGJ.states.Controls);
+	me.state.change(GBGJ.states.Intro);
 }

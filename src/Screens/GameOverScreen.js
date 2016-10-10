@@ -8,6 +8,7 @@ GBGJ.GameOverScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		this.subscription = me.event.subscribe( me.event.KEYDOWN, this.keyHandler.bind(this));
 		me.game.world.addChild(new GBGJ.GameOverRenderable());
+		me.audio.play("gbjam5-gameover");
 	},
 
 	keyHandler: function (action, keyCode, edge) {
@@ -17,6 +18,7 @@ GBGJ.GameOverScreen = me.ScreenObject.extend({
 	},
 	onDestroyEvent: function() {
 		me.event.unsubscribe(this.subscription);
+		me.audio.stop("gbjam5-gameover");
 	},
 });
 

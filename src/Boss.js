@@ -11,6 +11,8 @@ GBGJ.Boss = me.Entity.extend({
 		this.nextLevel = settings.nextLevel;
 
 		this.pos.z = 5;
+
+		this.dyingSound = false;
 	},
 
 	onDeactivateEvent: function() {
@@ -52,6 +54,11 @@ GBGJ.Boss = me.Entity.extend({
 				);
 			me.game.world.addChild( new GBGJ.BloodGenerator( center, bounds ) );
 			me.game.viewport.shake(4, 5000, me.game.viewport.AXIS.BOTH, this.die.bind(this));
+
+			if (!this.dyingSound) {
+				me.audio.play(this.getDeathSound());
+				this.dyingSound = true;
+			}
 		}
 		else {
 			var numChunks = (1).random(4);
@@ -73,7 +80,8 @@ GBGJ.Boss = me.Entity.extend({
 					)
 				);
 			}
-			this.changeAnimation("hit", this.changeAnimation.bind(this, "idle"))
+			this.changeAnimation("hit", this.changeAnimation.bind(this, "idle"));
+			me.audio.play("explosion2", false, null, 0.5);
 		}
 	},
 
@@ -91,6 +99,10 @@ GBGJ.Boss = me.Entity.extend({
 			return false;
 		}
 		return false;
+	},
+
+	getDeathSound: function() {
+		return "";
 	}
 });
 
@@ -101,6 +113,7 @@ GBGJ.BloodGenerator = me.Renderable.extend({
 		this.alwaysUpdate = true;
 		this.spawnRect = spawnRect;
 		this.pos.set(basePos.x, basePos.y, 0);
+		this.explosionSoundCounter = 0;
 	},
 
 	update : function (dt) {
@@ -124,6 +137,11 @@ GBGJ.BloodGenerator = me.Renderable.extend({
 					}
 				)
 			);
+
+			if (this.explosionSoundCounter % 5 == 0) {
+				me.audio.play("explosion2", false, null, 0.2);
+			}
+			this.explosionSoundCounter++;
 		}
 		return false;
 	},

@@ -54,6 +54,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	addShotgun: function() {
 		GBGJ.playerWeapon = this.weapon = "shotgun";
+		me.audio.play("powerup");
 	},
 
 	setBombs: function(n) {
@@ -79,6 +80,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 			this.bombTimer = 500;
 			this.setBombs(this.bombs - 1);
 			me.event.publish("drop da bomb", [this]);
+			me.audio.play("bomb", false, null, 0.5);
 		}
 	},
 
@@ -115,6 +117,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 						dir: { x: 0.75, y: 0.25, }
 					});
 					bullet.add();
+					me.audio.play("playershoot");
 					break;
 				default:
 					this.shootTimer = GBGJ.Constant.player.cooldown.normal;
@@ -125,6 +128,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 						}
 					});
 					bullet.add();
+					me.audio.play("playershoot");
 					this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
 					break;
 			}
@@ -189,6 +193,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	die: function() {
 		me.game.world.removeChild(this);
+		me.audio.play("playerdeath", false, null, 0.75);
 
 		GBGJ.playerWeapon = this.weapon = "";
 

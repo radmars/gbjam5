@@ -119,4 +119,8 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 			this.currentTimer = 0;
 		}
 	},
+
+	getDeathSound: function() {
+		return "boss1death";
+	}
 });

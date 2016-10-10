@@ -83,6 +83,7 @@ GBGJ.Bullet = me.Entity.extend({
 		// Bullets never respond to collisions other than with destruction.
 		this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 		this.remove();
+		me.audio.play("hit");
 	},
 
 	onCollision : function (response, other) {

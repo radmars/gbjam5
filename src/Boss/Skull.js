@@ -92,5 +92,9 @@ GBGJ.SkullBoss = GBGJ.Boss.extend({
 		
 
 		this.bulletTimer += dt;
+	},
+
+	getDeathSound: function() {
+		return "boss2death";
 	}
 });

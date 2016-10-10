@@ -8,6 +8,7 @@ GBGJ.WinScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		this.subscription = me.event.subscribe( me.event.KEYDOWN, this.keyHandler.bind(this));
 		me.game.world.addChild(new GBGJ.WinRenderable());
+		me.audio.play("gbjam5-win");
 	},
 
 	keyHandler: function (action, keyCode, edge) {
@@ -17,6 +18,7 @@ GBGJ.WinScreen = me.ScreenObject.extend({
 	},
 	onDestroyEvent: function() {
 		me.event.unsubscribe(this.subscription);
+		me.audio.stop("gbjam5-win");
 	},
 });
 
