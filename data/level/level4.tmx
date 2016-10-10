@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="65" height="15" tilewidth="16" tileheight="16" nextobjectid="212">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="65" height="15" tilewidth="16" tileheight="16" nextobjectid="220">
  <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="256" columns="16">
   <image source="../image/tilemap.png" width="256" height="256"/>
  </tileset>
@@ -65,7 +65,7 @@
   <object id="87" name="Path" type="EnemySpike" x="671.5" y="180">
    <polyline points="0,0 -10,-33 -32,-41.5"/>
   </object>
-  <object id="88" name="Path" type="EnemySpike" x="716.5" y="197">
+  <object id="88" name="Path" type="EnemyShooter" x="713" y="180.25">
    <polyline points="0,0 -10,-33 -32,-41.5"/>
   </object>
   <object id="89" name="Path" type="EnemySpike" x="753" y="23.5">
@@ -293,6 +293,24 @@
   <object id="209" name="EnemyBasic" x="795.5" y="92.75" width="8" height="7.5"/>
   <object id="210" name="EnemyBasic" x="845.5" y="103.75" width="8" height="7.5"/>
   <object id="211" name="EnemyBasic" x="825.5" y="121.25" width="8" height="7.5"/>
+  <object id="212" name="Path" type="EnemyShooter" x="735.5" y="101.25">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="213" name="Path" type="EnemyShooter" x="619.75" y="63">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="214" name="Path" type="EnemyShooter" x="615.5" y="130.75">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="215" name="Path" type="EnemyShooter" x="516" y="127.5">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="216" name="Path" type="EnemyShooter" x="275.5" y="195.75">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="219" name="Path" type="EnemyShooter" x="520.5" y="145.5">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
  </objectgroup>
  <objectgroup color="#ff0000" name="collision layer" opacity="0.79">
   <object id="17" x="162.667" y="224" width="157.333" height="16"/>
