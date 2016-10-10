@@ -139,7 +139,7 @@ GBGJ.BloodGenerator = me.Renderable.extend({
 			);
 
 			if (this.explosionSoundCounter % 5 == 0) {
-				me.audio.play("explosion2", false, null, 0.2);
+				me.audio.play("explosion2", false, null, 0.5);
 			}
 			this.explosionSoundCounter++;
 		}
