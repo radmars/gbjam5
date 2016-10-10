@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="38" height="11" tilewidth="16" tileheight="16" nextobjectid="39">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="65" height="15" tilewidth="16" tileheight="16" nextobjectid="179">
  <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="256" columns="16">
   <image source="../image/tilemap.png" width="256" height="256"/>
  </tileset>
@@ -9,41 +9,277 @@
    <property name="ratio" value="0.25"/>
   </properties>
  </imagelayer>
- <layer name="edge tiles" width="38" height="11">
+ <layer name="edge tiles" width="65" height="15">
   <data encoding="base64">
-   AgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAABCAAAAQwAAAEQAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAVAAAAGMAAABjAAAAYwAAAGMAAABjAAAAYwAAAGMAAABjAAAAYwAAAGMAAABjAAAAYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYwAAAGMAAABjAAAAYwAAAGMAAABjAAAAYwAAAGMAAABjAAAAYwAAAGMAAABjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACEAAAATAAAAEwAAABMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAABMAAAATAAAAEwAAABMAAAATAAAAEwAAABMAAAATAAAAIgAAACMAAAAjAAAAIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAxAAAAIgAAACMAAAAjAAAAIwAAACMAAAAjAAAAIwAAACMAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADEAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAA==
+   BAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAABEAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAQgAAAEMAAABDAAAAQwAAAEMAAABDAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAARAAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAUwAAAFMAAABTAAAAUwAAAFMAAABCAAAAQwAAAEMAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAABTAAAAUwAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQgAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAQwAAAEMAAABDAAAAQwAAAEMAAAAEAAAABAAAAEMAAABDAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAQwAAAEQAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAAQAAAAEAAAABAAAAAQAAABDAAAAQwAAAEQAAAAzAAAAMwAAADMAAAAzAAAAMwAAAEIAAABDAAAAMwAAADMAAABCAAAABAAAAAQAAAAEAAAABAAAAEQAAABTAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQwAAAEMAAABDAAAARAAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAAAzAAAAMwAAADMAAABCAAAAQwAAAEMAAABDAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFMAAABTAAAAUwAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABIAAAATAAAAEwAAABMAAAATAAAAEwAAABMAAAATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAEwAAABMAAAATAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABIAAAATAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAACIAAAAjAAAAIwAAACMAAAAkAAAAEwAAABMAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABIAAAATAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAABMAAAATAAAAEwAAABMAAAATAAAAEwAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABIAAAAiAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAACQAAAATAAAAFAAAAAAAAAAAAAAAEgAAABMAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAABMAAAATAAAAEwAAABMAAAATAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAIwAAACMAAAAjAAAAIwAAACMAAAAjAAAAJAAAABMAAAAVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABIAAAATAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAkAAAAEwAAABMAAAAiAAAAIwAAACQAAAATAAAAEwAAABQAAAAAAAAAAAAAABIAAAAiAAAAIwAAACMAAAAjAAAAIwAAACMAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAIwAAACQAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABIAAAATAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAjAAAAIwAAAAQAAAAEAAAABAAAAAQAAAAEAAAAJAAAABMAAAATAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAACQAAAATAAAAEwAAABMAAAATAAAAEwAAABMAAAATAAAAEwAAABMAAAATAAAAIgAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAIwAAACMAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAA
   </data>
  </layer>
  <objectgroup name="entities">
-  <object id="1" name="Player" x="40" y="50" width="16" height="16"/>
-  <object id="11" name="Path" type="EnemyShooter" x="207.849" y="53.9394">
-   <polyline points="-9.66667,-12.3333 -35.3333,3 -77.3333,18.6667 -182.5,23.1667"/>
+  <object id="1" name="Player" x="22.6667" y="143.333" width="16" height="16"/>
+  <object id="62" name="Path" type="EnemyBasic" x="258.5" y="209.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
   </object>
-  <object id="12" name="Path" type="EnemySpike" x="282.455" y="100.909">
-   <polyline points="-49.3333,-29.6667 -73.3333,-6 -125.667,7 -239.583,18.0833"/>
+  <object id="64" name="Path" type="EnemyBasic" x="269" y="205.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
   </object>
-  <object id="13" name="Path" type="EnemyBoomer" x="209.333" y="109.333">
-   <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
+  <object id="65" name="Path" type="EnemyBasic" x="277" y="195.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
   </object>
-  <object id="15" name="FinalBoss" x="527.455" y="-0.181818" width="80" height="176">
-   <properties>
-    <property name="nextLevel" value="level1"/>
-   </properties>
+  <object id="66" name="Path" type="EnemyBasic" x="281.5" y="184.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
   </object>
-  <object id="37" name="Path" type="EnemyShooter" x="568" y="41">
-   <polyline points="-96.1667,-20.3333 -124.333,3 -238.333,40.6667 -10.5,41.1667"/>
+  <object id="67" name="Path" type="EnemyBasic" x="301.5" y="135.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
   </object>
-  <object id="38" name="Path" type="EnemyBasic" x="287.273" y="134.364">
-   <polyline points="3.33333,-53.3333 -22,-30 -160.333,-16.3333"/>
+  <object id="69" name="Path" type="EnemyBasic" x="321.5" y="139.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
   </object>
+  <object id="70" name="Path" type="EnemyBasic" x="328" y="146">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="71" name="Path" type="EnemyBasic" x="312" y="137.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="72" name="Path" type="EnemyBasic" x="337" y="147.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="73" name="Path" type="EnemyBasic" x="347.5" y="150">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="76" name="Path" type="EnemyBasic" x="245" y="213">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="77" name="Path" type="EnemyBasic" x="228.5" y="213">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="78" name="EnemyBoomer" x="357" y="129"/>
+  <object id="80" name="EnemyTank" x="406.5" y="107"/>
+  <object id="81" name="EnemySpike" x="356" y="166.5" width="11.5" height="11"/>
+  <object id="82" name="EnemySpike" x="473.75" y="128" width="11.5" height="11"/>
+  <object id="84" name="Path" type="EnemySpike" x="215.5" y="212">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="86" name="Path" type="EnemySpike" x="586.5" y="178">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="87" name="Path" type="EnemySpike" x="671.5" y="180">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="88" name="Path" type="EnemySpike" x="716.5" y="197">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="89" name="Path" type="EnemySpike" x="753" y="23.5">
+   <polyline points="0,0 -9,25.5 -38.5,37.5"/>
+  </object>
+  <object id="90" name="Path" type="EnemySpike" x="499.5" y="31.5">
+   <polyline points="0,0 -9,25.5 -38.5,37.5"/>
+  </object>
+  <object id="91" name="Path" type="EnemyBasic" x="608.5" y="21.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="92" name="Path" type="EnemyBasic" x="615" y="26">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="93" name="Path" type="EnemyBasic" x="619.5" y="30.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="94" name="Path" type="EnemyBasic" x="625" y="37.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="95" name="Path" type="EnemyBasic" x="630.5" y="43.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="96" name="Path" type="EnemyBasic" x="636.5" y="51">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="97" name="Path" type="EnemyBasic" x="641" y="57.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="98" name="Path" type="EnemyBasic" x="645.5" y="65">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="99" name="Path" type="EnemyBasic" x="650" y="71">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="100" name="Path" type="EnemyBasic" x="656" y="78">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="101" name="Path" type="EnemyBasic" x="659.5" y="89.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="102" name="Path" type="EnemyBasic" x="664.5" y="102.5">
+   <polyline points="0,0 -18,43.5 -32,57 -42,64.5 -63,64.5 -75.5,61 -95,48 -112,38 -126,32.5 -164.5,30 -179,32"/>
+  </object>
+  <object id="103" name="Path" type="EnemyBasic" x="609.5" y="124.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="104" name="Path" type="EnemyBasic" x="614.5" y="130.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="105" name="Path" type="EnemyBasic" x="617.5" y="135">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="106" name="Path" type="EnemyBasic" x="622" y="139.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="107" name="Path" type="EnemyBasic" x="627" y="144.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="108" name="Path" type="EnemyBasic" x="635.5" y="154">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="109" name="Path" type="EnemyBasic" x="642.5" y="161">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="110" name="EnemyTank" x="694.5" y="92.5"/>
+  <object id="111" name="EnemyTank" x="695" y="119.5" width="8" height="7.5"/>
+  <object id="113" name="EnemyBoomer" x="633" y="98.5"/>
+  <object id="114" name="EnemyBasic" x="657.5" y="34.25" width="8" height="7.5"/>
+  <object id="115" name="EnemyBasic" x="666" y="40.25" width="8" height="7.5"/>
+  <object id="116" name="EnemyBasic" x="673" y="47.25" width="8" height="7.5"/>
+  <object id="117" name="EnemyBasic" x="683.5" y="57.25" width="8" height="7.5"/>
+  <object id="122" name="EnemyBasic" x="284" y="149.25" width="8" height="7.5"/>
+  <object id="123" name="EnemyBasic" x="294.5" y="162.75" width="8" height="7.5"/>
+  <object id="124" name="EnemyBasic" x="305.5" y="174.25" width="8" height="7.5"/>
+  <object id="125" name="EnemyBasic" x="316.5" y="186.25" width="8" height="7.5"/>
+  <object id="126" name="EnemyBasic" x="479" y="49.75" width="8" height="7.5"/>
+  <object id="127" name="EnemyBasic" x="487.5" y="61.75" width="8" height="7.5"/>
+  <object id="128" name="EnemyBasic" x="497" y="77.25" width="8" height="7.5"/>
+  <object id="129" name="EnemyBasic" x="504" y="89.25" width="8" height="7.5"/>
+  <object id="130" name="EnemyBasic" x="513" y="103.75" width="8" height="7.5"/>
+  <object id="131" name="EnemyBasic" x="650" y="158.75" width="8" height="7.5"/>
+  <object id="132" name="EnemyBasic" x="663.5" y="151.25" width="8" height="7.5"/>
+  <object id="133" name="EnemyBasic" x="669.5" y="131.25" width="8" height="7.5"/>
+  <object id="134" name="EnemyBasic" x="670.5" y="107.75" width="8" height="7.5"/>
+  <object id="135" name="EnemyBasic" x="748" y="155.25" width="8" height="7.5"/>
+  <object id="136" name="EnemyBasic" x="751" y="138.25" width="8" height="7.5"/>
+  <object id="137" name="EnemyBasic" x="751" y="132.25" width="8" height="7.5"/>
+  <object id="138" name="EnemyBasic" x="750" y="122.25" width="8" height="7.5"/>
+  <object id="139" name="EnemyBasic" x="749.5" y="110.25" width="8" height="7.5"/>
+  <object id="140" name="EnemyBasic" x="749.5" y="104.75" width="8" height="7.5"/>
+  <object id="141" name="EnemyBasic" x="749.5" y="93.25" width="8" height="7.5"/>
+  <object id="142" name="EnemyBasic" x="750.5" y="81.25" width="8" height="7.5"/>
+  <object id="143" name="EnemyBasic" x="751" y="72.25" width="8" height="7.5"/>
+  <object id="144" name="EnemyBasic" x="751" y="68.75" width="8" height="7.5"/>
+  <object id="145" name="Path" type="EnemyBasic" x="448" y="87.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="146" name="Path" type="EnemyBasic" x="443.5" y="83">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="147" name="Path" type="EnemyBasic" x="436.5" y="75">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="148" name="Path" type="EnemyBasic" x="432" y="70">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="149" name="Path" type="EnemyBasic" x="458.5" y="84.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="150" name="Path" type="EnemyBasic" x="732.5" y="27">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="151" name="Path" type="EnemyBasic" x="739.5" y="31.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="152" name="Path" type="EnemyBasic" x="754" y="35.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="153" name="Path" type="EnemyBasic" x="768.5" y="42">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="154" name="Path" type="EnemyBasic" x="760" y="42.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="155" name="Path" type="EnemyBasic" x="718" y="34.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="157" name="Path" type="EnemyBasic" x="797" y="155.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="158" name="Path" type="EnemyBasic" x="796" y="140.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="159" name="Path" type="EnemyBasic" x="796.5" y="118.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="160" name="Path" type="EnemyBasic" x="800" y="94">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="161" name="Path" type="EnemyBasic" x="813" y="143">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="162" name="Path" type="EnemyBasic" x="810" y="102.5">
+   <polyline points="0,0 -9,-33 -21.5,-45 -40.5,-48.5 -67,-41 -73.5,-23 -85.5,-14 -95.5,-25 -105,-43.5 -106.5,-62.5"/>
+  </object>
+  <object id="163" name="EnemyBoomer" x="726" y="150"/>
+  <object id="164" name="EnemyTank" x="826.5" y="83.5"/>
+  <object id="165" name="EnemyTank" x="851.5" y="127.5"/>
+  <object id="166" name="Path" type="EnemyBasic" x="900.5" y="59">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="167" name="Path" type="EnemyBasic" x="882.5" y="60">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="168" name="Path" type="EnemyBasic" x="869.5" y="64">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="169" name="Path" type="EnemyBasic" x="852.5" y="67.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="170" name="Path" type="EnemyBasic" x="837" y="68">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="171" name="Path" type="EnemyBasic" x="896.5" y="95">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="172" name="Path" type="EnemyBasic" x="882" y="94">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="173" name="Path" type="EnemyBasic" x="866" y="96">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="174" name="Path" type="EnemyBasic" x="843.5" y="104">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="175" name="Path" type="EnemyBasic" x="816" y="112">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="176" name="Path" type="EnemyBasic" x="784" y="117.5">
+   <polyline points="0,0 -9,25.5 -54,63.5"/>
+  </object>
+  <object id="177" name="Shotgun" x="559.75" y="33" width="11.5" height="11"/>
+  <object id="178" name="Bomb" x="369.75" y="144.5" width="11.5" height="11"/>
  </objectgroup>
  <objectgroup color="#ff0000" name="collision layer" opacity="0.79">
-  <object id="16" x="0" y="0" width="224" height="16"/>
-  <object id="17" x="0" y="160" width="400" height="16"/>
-  <object id="18" x="400" y="112" width="144" height="64"/>
-  <object id="19" x="544" y="96" width="64" height="80"/>
-  <object id="21" x="416" y="0" width="192" height="16"/>
-  <object id="23" x="224" y="0" width="192" height="32"/>
-  <object id="33" x="0.666663" y="0" width="15.3333" height="176"/>
+  <object id="17" x="162.667" y="224" width="157.333" height="16"/>
+  <object id="18" x="18.6667" y="174.667" width="90.6667" height="64"/>
+  <object id="19" x="606.667" y="176.667" width="48.6667" height="20.833"/>
+  <object id="21" x="433.333" y="0" width="330.667" height="16"/>
+  <object id="23" x="401.333" y="0.666667" width="30" height="32"/>
+  <object id="33" x="1.33333" y="38.5" width="15.3333" height="206"/>
+  <object id="39" x="1023.67" y="6" width="15.3333" height="232"/>
+  <object id="40" x="110.667" y="191.333" width="18.6667" height="52.167"/>
+  <object id="41" x="130.667" y="209.333" width="33.3333" height="33.667"/>
+  <object id="42" x="322" y="209.333" width="33.3333" height="35.3333"/>
+  <object id="43" x="353.333" y="191.333" width="33.3333" height="53.6667"/>
+  <object id="44" x="387.333" y="178.667" width="184.667" height="64.8333"/>
+  <object id="45" x="400.333" y="161.333" width="139.667" height="25.167"/>
+  <object id="46" x="419" y="145.458" width="74.3334" height="19.042"/>
+  <object id="47" x="573.333" y="194" width="129.333" height="48"/>
+  <object id="48" x="702" y="208.667" width="32.6665" height="48"/>
+  <object id="49" x="736.333" y="194.667" width="24.3333" height="58"/>
+  <object id="50" x="755.167" y="175.667" width="93.5" height="58"/>
+  <object id="51" x="849.917" y="160.333" width="39.4167" height="57"/>
+  <object id="52" x="882.292" y="144.833" width="39.4167" height="57"/>
+  <object id="53" x="912.292" y="21.5" width="145.042" height="57"/>
+  <object id="54" x="920.812" y="128.833" width="145.042" height="57"/>
+  <object id="55" x="866.146" y="-9.83333" width="45.1877" height="57"/>
+  <object id="56" x="767.333" y="-25.1667" width="97.2605" height="57"/>
+  <object id="57" x="399.333" y="32.6667" width="17.6667" height="15.3333"/>
+  <object id="58" x="381.167" y="48.3334" width="17.6667" height="30.3333"/>
+  <object id="59" x="344.667" y="63.5" width="37.5" height="30.3333"/>
+  <object id="60" x="330.667" y="56" width="20.75" height="54.6667"/>
+  <object id="61" x="16.6667" y="47.3333" width="317.708" height="79.5833"/>
  </objectgroup>
 </map>
