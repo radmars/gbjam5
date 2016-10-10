@@ -24,13 +24,13 @@ GBGJ.SkullBoss = GBGJ.Boss.extend({
 				this.rotator = 0;
 			}
 			me.game.world.addChild(
-				new GBGJ.BulletShooter(this.pos.x + 20, this.pos.y, {
+				new GBGJ.BulletShooter(this.pos.x + 25, this.pos.y+6, {
 					speed: 1,
 					dir: (new me.Vector2d(-1, 1)).rotate(angle).normalize(),
 				})
 			);
 			me.game.world.addChild(
-				new GBGJ.BulletShooter(this.pos.x + 20, this.pos.y, {
+				new GBGJ.BulletShooter(this.pos.x + 25, this.pos.y+6, {
 					speed: 1,
 					dir: (new me.Vector2d(-1, -1)).rotate(angle).normalize(),
 				})

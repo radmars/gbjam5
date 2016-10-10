@@ -7,10 +7,14 @@ GBGJ.Boss = me.Entity.extend({
 
 		this.body.setMaxVelocity(1, 1);
 		this.body.gravity = 0;
-		this.hp = settings.hp || 4;
+		this.hp = settings.hp || 50;
 		this.nextLevel = settings.nextLevel;
 
 		this.pos.z = 5;
+	},
+
+	onDeactivateEvent: function() {
+		this.started = false;
 	},
 
 	changeAnimation: function(dest, next) {
