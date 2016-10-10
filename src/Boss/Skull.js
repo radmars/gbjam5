@@ -17,7 +17,7 @@ GBGJ.SkullBoss = GBGJ.Boss.extend({
 		this.rotator = 0;
 	},
 
-	update: function(dt) {
+	bossUpdate: function(dt) {
 		if(this.bulletTimer > 400) {
 			var angle = this.rotator++ / 10 * Math.PI / 2;
 			if(this.rotator > 4) {
@@ -39,8 +39,5 @@ GBGJ.SkullBoss = GBGJ.Boss.extend({
 		}
 
 		this.bulletTimer += dt;
-
-		this._super(GBGJ.Boss, 'update', [dt]);
-		return true;
 	}
 });

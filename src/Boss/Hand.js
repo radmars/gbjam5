@@ -62,18 +62,13 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 		this.renderable.flipX(this.flipped);
 	},
 
-	update: function(dt) {
-		if(this.hp > 0) {
-			this.currentTimer += dt;
-			if(this.currentTimer > this.state.delay) {
-				var next = this.state.next
-				this[next]();
-				this.state = this.states[next];
-				this.currentTimer = 0;
-			}
+	bossUpdate: function(dt) {
+		this.currentTimer += dt;
+		if(this.currentTimer > this.state.delay) {
+			var next = this.state.next
+			this[next]();
+			this.state = this.states[next];
+			this.currentTimer = 0;
 		}
-
-		this._super(GBGJ.Boss, 'update', [dt]);
-		return true;
-	}
+	},
 });

@@ -30,7 +30,7 @@ GBGJ.preload = function() {
 		alert("Your browser doesn't like MelonJS :(");
 		return;
 	}
-	me.audio.init("mp3,m4a,ogg");
+	me.audio.init("m4a,ogg");
 
 	me.loader.load(GBGJ.Image("8x8_font"), GBGJ.onload.bind(GBGJ));
 };

@@ -21,6 +21,14 @@ GBGJ.Boss = me.Entity.extend({
 			this.renderable.setCurrentAnimation(dest, next);
 		}
 	},
+	update: function(dt) {
+		this.started = this.started || me.game.viewport.right > this.body.getBounds().right + this.pos.x + 5;
+		if(this.hp > 0 && this.started) {
+			this.bossUpdate(dt);
+		}
+
+		return this._super(me.Entity, 'update', [dt]);
+	},
 
 	die: function() {
 		me.state.current().goToNextLevel(this.nextLevel);
@@ -67,7 +75,9 @@ GBGJ.Boss = me.Entity.extend({
 
 	onCollision : function (response, other) {
 		if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
-			this.damage(other.pos);
+			if(this.started) {
+				this.damage(other.pos);
+			}
 			return false;
 		}
 		if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
