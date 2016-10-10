@@ -18,7 +18,7 @@
   <object id="1" name="Player" x="16" y="143.667" width="16" height="16"/>
   <object id="40" name="LevelChanger" x="1072" y="64.4583" width="48" height="127.75">
    <properties>
-    <property name="nextLevel" value="level4"/>
+    <property name="nextLevel" value="handboss"/>
    </properties>
   </object>
   <object id="48" x="21.6667" y="149.667"/>
