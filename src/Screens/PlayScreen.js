@@ -42,7 +42,10 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		else if (this.nextLevel == "level6") {
 			song = "gbjam5-finalboss";
 		}
-		me.audio.playTrack(song);
+		if (song != "") {
+			me.audio.stopTrack();
+			me.audio.playTrack(song);
+		}
 	},
 
 	loadNextLevel: function() {
