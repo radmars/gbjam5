@@ -71,33 +71,30 @@ GBGJ.FinalBoss = GBGJ.Boss.extend({
 	die: function() {
 		me.state.change(GBGJ.states.Win);
 	},
-	update: function(dt) {
-		if(this.hp > 0) {
-			// Start pumping shots out in a burst.
-			if(this.shootDelay <= 0 && this.shots <= this.currentState.shots ) {
-				this.shotTimer += dt;
-				if(this.shotTimer >= 150) {
-					if(this.currentState.eye) {
-						this.shootFromEye();
-					}
-					if(this.currentState.gut) {
-						this.shootFromGut();
-					}
-					this.rotator++;
-					this.shots ++;
-					this.shotTimer = 0;
-					if(this.shots >= this.currentState.shots) {
-						this.shootDelay = 1500;
-						this.shots = 0;
-						this.rotateState();
-					}
+
+	bossUpdate: function(dt) {
+		// Start pumping shots out in a burst.
+		if(this.shootDelay <= 0 && this.shots <= this.currentState.shots ) {
+			this.shotTimer += dt;
+			if(this.shotTimer >= 150) {
+				if(this.currentState.eye) {
+					this.shootFromEye();
+				}
+				if(this.currentState.gut) {
+					this.shootFromGut();
+				}
+				this.rotator++;
+				this.shots ++;
+				this.shotTimer = 0;
+				if(this.shots >= this.currentState.shots) {
+					this.shootDelay = 1500;
+					this.shots = 0;
+					this.rotateState();
 				}
 			}
-			else {
-				this.shootDelay -= dt;
-			}
 		}
-
-		this._super(GBGJ.Boss, 'update', [dt]);
+		else {
+			this.shootDelay -= dt;
+		}
 	},
 });
