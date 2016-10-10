@@ -17,6 +17,7 @@ GBGJ.IntroScreen = me.ScreenObject.extend({
 
 	keyHandler: function (action, keyCode, edge) {
 		if( keyCode === me.input.KEY.ENTER ) {
+			me.audio.stop("radboy");
 			me.state.change( GBGJ.states.Controls );
 		}
 	},
