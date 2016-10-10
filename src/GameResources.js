@@ -121,6 +121,7 @@ GBGJ.GameResources = (function() {
 		_Audio("playerdeath"),
 		_Audio("playershoot"),
 		_Audio("powerup"),
+		_Audio("shotgun"),
 	];
 
 	return GameResources;

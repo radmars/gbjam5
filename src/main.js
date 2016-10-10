@@ -50,7 +50,7 @@ GBGJ.onload = function() {
 		document.head.appendChild(imported);
 	}
 
-	me.audio.setVolume(0.75);
+	me.audio.setVolume(0.7);
 
 	if(GBGJ.data.options.mute) {
 		me.audio.muteAll();

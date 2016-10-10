@@ -117,7 +117,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 						dir: { x: 0.75, y: 0.25, }
 					});
 					bullet.add();
-					me.audio.play("playershoot");
+					me.audio.play("shotgun", 0.75);
 					break;
 				default:
 					this.shootTimer = GBGJ.Constant.player.cooldown.normal;
