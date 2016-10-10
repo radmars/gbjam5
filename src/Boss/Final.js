@@ -12,31 +12,60 @@ GBGJ.FinalBoss = GBGJ.Boss.extend({
 		];
 		this._super(GBGJ.Boss, 'init', [x, y, settings]);
 		this.anchorPoint.set(.25, .5);
-		this.renderable.addAnimation("idle", [0, 1, 2, 3]);
+		this.renderable.addAnimation("idle", [0, 1, 2, 3], 300);
 		this.renderable.addAnimation("hit", [0, 4, 0, 4]);
 		this.renderable.addAnimation("die", [0, 4]);
 		this.changeAnimation("idle");
 		this.rotator = 0;
 		this.eyePos = this.pos.clone().add(new me.Vector2d(4, 10));
 		this.gutPos = this.pos.clone().add(new me.Vector2d(26, 80));
+		this.chestPos = this.pos.clone().add(new me.Vector2d(16, 40));
 		this.shots = 0;
 		this.shootDelay = 0;
 		this.shotTimer = 0;
+		this.hp = 250;
 		this.states = [
 			{
 				eye: 1,
 				shots: 5,
 				gut: 0,
+				boomer:0,
+				tank:0
 			},
 			{
-				eye: 1,
-				shots: 10,
+				eye: 0,
+				shots: 5,
 				gut: 1,
+				boomer:0,
+				tank:0
+			},
+			{
+				gut: 0,
+				shots: 1,
+				eye: 0,
+				boomer:0,
+				tank:1
 			},
 			{
 				gut: 1,
 				shots: 5,
 				eye: 0,
+				boomer:0,
+				tank:0
+			},
+			{
+				gut: 0,
+				shots: 1,
+				eye: 0,
+				boomer:1,
+				tank:0
+			},
+			{
+				gut: 0,
+				shots: 10,
+				eye: 0,
+				boomer:0,
+				tank:0
 			},
 		];
 		this.rotateState();
@@ -54,13 +83,27 @@ GBGJ.FinalBoss = GBGJ.Boss.extend({
 	},
 
 	shootFromEye: function() {
-		var angle = this.shots / this.currentState.shots * Math.PI / 2;
-		var dir = new me.Vector2d(-1, 0);
-		dir.rotate(angle);
+		//var angle = //this.shots / this.currentState.shots * Math.PI / 2;
+		var dir = new me.Vector2d(-0.7, 0.5 + Math.random()*0.5-0.25);
+		//dir.normalize();
+		//dir.rotate(angle);
 
 		this.shoot(this.eyePos, dir);
 	},
 
+	
+	spawnBoomer: function() {
+		var baddie = me.pool.pull("EnemyBoomer", this.chestPos.x, this.chestPos.y, {});
+		me.game.world.addChild(baddie)
+		//this.shoot(this.gutPos, dir);
+	},
+	
+	spawnTank: function() {
+		var baddie = me.pool.pull("EnemyTank", this.chestPos.x, this.chestPos.y, {});
+		me.game.world.addChild(baddie)
+		//this.shoot(this.gutPos, dir);
+	},
+	
 	shootFromGut: function() {
 		var angle = this.shots / this.currentState.shots * Math.PI / 2;
 		var dir = new me.Vector2d(-1, 0);
@@ -82,6 +125,12 @@ GBGJ.FinalBoss = GBGJ.Boss.extend({
 				}
 				if(this.currentState.gut) {
 					this.shootFromGut();
+				}
+				if(this.currentState.boomer) {
+					this.spawnBoomer();
+				}
+				if(this.currentState.tank) {
+					this.spawnTank();
 				}
 				this.rotator++;
 				this.shots ++;

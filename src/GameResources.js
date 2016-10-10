@@ -95,6 +95,7 @@ GBGJ.GameResources = (function() {
 		_Level("level3"),
 		_Level("level4"),
 		_Level("level5"),
+		_Level("handboss"),
 		_Level("test"),
 
 		_Audio("gbjam5-1"),

@@ -11,6 +11,18 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 		this.states = {
 			shoot: {
 				delay: 1000,
+				next: "moveUp",
+			},
+			moveUp: {
+				delay: 1200,
+				next: "shootUp",
+			},
+			shootUp: {
+				delay: 1000,
+				next: "down",
+			},
+			down: {
+				delay: 1200,
 				next: "slide",
 			},
 			slide: {
@@ -22,6 +34,8 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 				next: "shoot",
 			}
 		};
+		
+		this.hp = 65;
 
 		this._super(GBGJ.Boss, 'init', [x, y, settings]);
 		this.renderable.addAnimation("idle", [0, 1, 2, 3]);
@@ -31,13 +45,47 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 		this.state = this.states.flip;
 		this.currentTimer = 0;
 		this.flipped = false;
+		
+		this.baseX = this.pos.x;
+		this.baseY = this.pos.y;
 	},
 
-
+	
+	shootUp: function() {
+		var angle = 0;
+		var dir = new me.Vector2d(this.flipped ? 1 : -1, 0.25);
+		for( var i = 0 ; i < 6; i ++ ) {
+			me.game.world.addChild(
+				new GBGJ.BulletShooter(this.pos.x + i * 5, this.pos.y + (i * 10 - 5), {
+					speed: 1,
+					dir: dir,
+				})
+			);
+		}
+	},
+	
+	moveUp: function() {
+		var tween = new me.Tween(this.pos).to({
+			y: this.baseY - 50,
+		}, 800)
+			//.onComplete(myFunc);
+		//tween.easing(me.Tween.Easing.Quad.Out);
+		tween.start();
+	},
+	
+	down: function() {
+		var tween = new me.Tween(this.pos).to({
+			y: this.baseY,
+		}, 800)
+			//.onComplete(myFunc);
+		//tween.easing(me.Tween.Easing.Quad.Out);
+		tween.start();
+	},
+	
 
 	shoot: function() {
 		var angle = 0;
-		var dir = new me.Vector2d(this.flipped ? 1 : -1, 0);
+		var dir = new me.Vector2d(this.flipped ? 1 : -1, -0.25);
 		for( var i = 0 ; i < 6; i ++ ) {
 			me.game.world.addChild(
 				new GBGJ.BulletShooter(this.pos.x + i * 5, this.pos.y + (i * 10 - 5), {
@@ -50,8 +98,8 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 
 	slide: function() {
 		var tween = new me.Tween(this.pos).to({
-			x: this.pos.x + (this.flipped ? 1 : -1) * 84,
-		}, 1200)
+			x: this.pos.x + (this.flipped ? 1 : -1) * 120,
+		}, 1500)
 			//.onComplete(myFunc);
 		tween.easing(me.Tween.Easing.Bounce.Out);
 		tween.start();
