@@ -33,10 +33,10 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		if (this.nextLevel == "level1" || this.nextLevel == "level2") {
 			song = "gbjam5-1";
 		}
-		else if (this.nextLevel == "level3" || this.nextLevel == "handboss") {
+		else if (this.nextLevel == "level3") {
 			song = "gbjam5-2";
 		}
-		else if (this.nextLevel == "level4") {
+		else if (this.nextLevel == "level4" || this.nextLevel == "handboss") {
 			song = "gbjam5-3";
 		}
 		else if (this.nextLevel == "level5") {
