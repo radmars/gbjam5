@@ -21,6 +21,7 @@ GBGJ.Bomb = me.Entity.extend({
 		if(this.stillActive && other.body.collisionType == me.collision.types.PLAYER_OBJECT){
 			this.stillActive = false;
 			other.addBomb();
+			me.audio.play("powerup");
 			me.game.world.removeChild(this);
 		}
 		return false;
