@@ -314,21 +314,21 @@
  </objectgroup>
  <objectgroup color="#ff0000" name="collision layer" opacity="0.79">
   <object id="33" x="0.666663" y="0" width="15.3333" height="322"/>
-  <object id="134" x="16.3448" y="208.317" width="128.673" height="112.583"/>
+  <object id="134" x="7.01147" y="208.317" width="154.673" height="112.583"/>
   <object id="135" x="143.796" y="0.251741" width="112.187" height="127.261"/>
-  <object id="136" x="256.106" y="0.251901" width="927.203" height="64.409"/>
-  <object id="137" x="447.925" y="64.2756" width="449.203" height="63.409"/>
-  <object id="138" x="576.399" y="160.296" width="255.703" height="15.909"/>
-  <object id="139" x="576.899" y="128.546" width="320.203" height="30.909"/>
-  <object id="140" x="784.649" y="175.046" width="47.203" height="63.909"/>
-  <object id="141" x="16.6635" y="-0.0417" width="128.673" height="95.0834"/>
+  <object id="136" x="234.106" y="0.251901" width="949.203" height="64.409"/>
+  <object id="137" x="447.925" y="52.9423" width="449.203" height="74.7423"/>
+  <object id="138" x="576.399" y="151.629" width="255.703" height="24.5757"/>
+  <object id="139" x="576.899" y="116.546" width="320.203" height="42.909"/>
+  <object id="140" x="784.649" y="160.379" width="47.203" height="78.5757"/>
+  <object id="141" x="-0.00316667" y="-0.0417" width="190.006" height="95.0834"/>
   <object id="142" x="144.663" y="177.209" width="110.173" height="143.083"/>
-  <object id="143" x="255.413" y="240.959" width="400.173" height="79.583"/>
+  <object id="143" x="233.413" y="240.959" width="422.173" height="79.583"/>
   <object id="144" x="320.413" y="128.709" width="63.173" height="46.083"/>
-  <object id="145" x="448.913" y="176.459" width="63.173" height="66.083"/>
-  <object id="146" x="654.913" y="304.459" width="257.673" height="16.083"/>
+  <object id="145" x="448.913" y="176.459" width="63.173" height="79.4163"/>
+  <object id="146" x="640.913" y="304.459" width="285.006" height="16.083"/>
   <object id="147" x="912.663" y="224.959" width="271.173" height="95.083"/>
-  <object id="148" x="896.914" y="64.4585" width="288.173" height="31.583"/>
-  <object id="149" x="976.913" y="160.709" width="208.173" height="65.083"/>
+  <object id="148" x="875.581" y="64.4585" width="309.506" height="31.583"/>
+  <object id="149" x="976.913" y="160.709" width="208.173" height="88.4163"/>
  </objectgroup>
 </map>
