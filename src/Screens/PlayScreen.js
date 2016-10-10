@@ -30,16 +30,16 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		}));
 
 		var song = "";
-		if (this.nextLevel == "level1") {
+		if (this.nextLevel == "level1" || this.nextLevel == "level2") {
 			song = "gbjam5-1";
 		}
-		else if (this.nextLevel == "level3") {
+		else if (this.nextLevel == "level3" || this.nextLevel == "handboss") {
 			song = "gbjam5-2";
 		}
-		else if (this.nextLevel == "level5") {
+		else if (this.nextLevel == "level4") {
 			song = "gbjam5-3";
 		}
-		else if (this.nextLevel == "level6") {
+		else if (this.nextLevel == "level5") {
 			song = "gbjam5-finalboss";
 		}
 		if (song != "") {
