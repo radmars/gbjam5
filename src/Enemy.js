@@ -108,6 +108,8 @@
 				dir : (new me.Vector2d(speed, 0)).rotate(angle),
 			});
 			bullet.add();
+			var shotTypeSound = type == "BulletSpike" ? "missile" : "enemyshoot";
+			me.audio.play(shotTypeSound);
 		},
 
 		changeAnimation: function(dest, next) {
@@ -139,6 +141,8 @@
 				)
 			);
 			me.game.world.removeChild(this);
+			me.audio.play("explosion", false, null, 0.5);
+			me.audio.play(this.getDeathSound(), false, null, 0.5);
 		},
 
 		onCollision : function (response, other) {
@@ -176,5 +180,9 @@
 		angleToPlayer: function() {
 			return this.angleTo(this.getPlayer());
 		},
+
+		getDeathSound: function() {
+			return "";
+		}
 	});
 })();

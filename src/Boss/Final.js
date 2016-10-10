@@ -97,4 +97,8 @@ GBGJ.FinalBoss = GBGJ.Boss.extend({
 			this.shootDelay -= dt;
 		}
 	},
+
+	getDeathSound: function() {
+		return "finalbossdeath";
+	}
 });

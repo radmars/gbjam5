@@ -11,5 +11,9 @@
 
 			this._super(GBGJ.Enemy, 'init', [x, y, settings]);
 		},
+
+		getDeathSound: function() {
+			return "enemy1death";
+		}
 	});
 })();

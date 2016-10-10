@@ -42,5 +42,9 @@
 
 			return (this._super(GBGJ.Enemy, 'update', [dt]));
 		},
+
+		getDeathSound: function() {
+			return "enemy3death";
+		}
 	});
 })();

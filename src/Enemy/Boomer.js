@@ -33,5 +33,9 @@
 			}
 			this._super(GBGJ.Enemy, 'die', []);
 		},
+
+		getDeathSound: function() {
+			return "enemy2death";
+		}
 	});
 })();

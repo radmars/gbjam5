@@ -16,5 +16,9 @@
 			// Always move in the direction of the player.
 			return new me.Vector2d(this.speed, 0).rotate(this.angleToPlayer());
 		},
+
+		getDeathSound: function() {
+			return "enemy3death";
+		}
 	});
 })();
