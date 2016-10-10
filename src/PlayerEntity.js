@@ -44,14 +44,14 @@ GBGJ.PlayerEntity = me.Entity.extend({
 		this.renderable.addAnimation("shoot", [3, 4], 75);
 
 		this.weapon = GBGJ.playerWeapon;
-		
+
 		this.changeAnimation("idle");
 	},
 
 	addBomb: function() {
 		this.setBombs(this.bombs + 1);
 	},
-	
+
 	addShotgun: function() {
 		GBGJ.playerWeapon = this.weapon = "shotgun";
 	},
@@ -103,22 +103,22 @@ GBGJ.PlayerEntity = me.Entity.extend({
 					this.shootTimer = GBGJ.Constant.player.cooldown.shotgun;
 					this.changeAnimation("shoot", this.changeAnimation.bind(this, "idle"));
 
-					var bullet = new GBGJ.BulletPlayerBig(this.pos.x, this.pos.y-6, {
+					var bullet = new GBGJ.BulletPlayerBig(this.pos.x, this.pos.y-12, {
 						dir: { x: 1, y: 0, }
 					});
 					bullet.add();
-					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
+					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y - 6, {
 						dir: { x: 0.75, y: -0.25, }
 					});
 					bullet.add();
-					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
+					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y - 6, {
 						dir: { x: 0.75, y: 0.25, }
 					});
 					bullet.add();
 					break;
 				default:
 					this.shootTimer = GBGJ.Constant.player.cooldown.normal;
-					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y, {
+					var bullet = new GBGJ.BulletPlayer(this.pos.x, this.pos.y - 6, {
 						dir: {
 							x: 1,
 							y: 0,
@@ -189,9 +189,9 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	die: function() {
 		me.game.world.removeChild(this);
-		
+
 		GBGJ.playerWeapon = this.weapon = "";
-		
+
 		me.game.viewport.shake(5, 1000, me.game.viewport.AXIS.BOTH, function() {
 			me.state.change(GBGJ.states.GameOver);
 		});
