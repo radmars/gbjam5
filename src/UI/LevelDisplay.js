@@ -26,6 +26,9 @@ GBGJ.LevelDisplay = me.Renderable.extend({
 			case "level3":
 				text = "ORBITAL SHIPYARD";
 				break;
+			case "handboss":
+				text = "HAND OF FATE";
+				break;
 			case "level4":
 				text = "CORRUPTED CORE";
 				break;
