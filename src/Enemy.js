@@ -123,14 +123,14 @@
 			var angle = (0).randomFloat(Math.PI * 2);
 			var ca = Math.cos(angle);
 			var sa = Math.sin(angle);
-			var x = this.pos.x + ca * (0).randomFloat(1);
-			var y = this.pos.y + sa * (0).randomFloat(1);
+			var x = this.pos.x - 7// + ca * (0).randomFloat(1);
+			var y = this.pos.y - 8;//+ sa * (0).randomFloat(1);
 			me.game.world.addChild(
 				new GBGJ.BloodChunk(
 					~~(x),
 					~~(y),
 					{
-						speed: (0).randomFloat(0.1),
+						speed: (0.05).randomFloat(0.2),
 						dir: {
 							x: ca,
 							y: sa,
@@ -142,14 +142,14 @@
 		},
 
 		onCollision : function (response, other) {
-			var damage = other.damage; 
+			var damage = other.damage;
 			if( damage == null ){
-				damage = 1; 
+				damage = 1;
 			}
-			
+
 			if(other.body.collisionType == me.collision.types.PROJECTILE_OBJECT) {
 				this.takeHit(damage);
-				//this.die();
+				return false;
 			}
 			if(other.body.collisionType == me.collision.types.ENEMY_OBJECT){
 				return false;
@@ -159,16 +159,16 @@
 			}
 			return true;
 		},
-		
+
 		takeHit: function (damage) {
-			this.hp--; 
+			this.hp--;
 			if(this.hp<=0){
 				this.die();
 			}else{
 				this.changeAnimation("hit", this.changeAnimation.bind(this, "idle"));
 			}
 		},
-		
+
 		getPlayer: function () {
 			return me.state.current().player;
 		},
