@@ -44,7 +44,7 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		}
 		if (song != "") {
 			me.audio.stopTrack();
-			me.audio.playTrack(song);
+			me.audio.playTrack(song, 0.8);
 		}
 	},
 

@@ -109,7 +109,8 @@
 			});
 			bullet.add();
 			var shotTypeSound = type == "BulletSpike" ? "missile" : "enemyshoot";
-			me.audio.play(shotTypeSound);
+			var shotVolume = type == "BulletShooter" ? 0.3 : 0.8;
+			me.audio.play(shotTypeSound, false, null, shotVolume);
 		},
 
 		changeAnimation: function(dest, next) {
