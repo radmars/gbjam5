@@ -80,6 +80,7 @@ GBGJ.FinalBoss = GBGJ.Boss.extend({
 		me.game.world.addChild(
 			new GBGJ.BulletShooter(pos.x, pos.y, { speed: 1, dir: dir })
 		);
+		me.audio.play("enemyshoot");
 	},
 
 	shootFromEye: function() {

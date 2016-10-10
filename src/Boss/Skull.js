@@ -39,6 +39,7 @@ GBGJ.SkullBoss = GBGJ.Boss.extend({
 					dir: (new me.Vector2d(-1, -1)).rotate(angle).normalize(),
 				})
 			);
+			me.audio.play("enemyshoot");
 			this.bulletTimer = 0;
 		}
 	},
@@ -52,6 +53,7 @@ GBGJ.SkullBoss = GBGJ.Boss.extend({
 				})
 			);
 			this.bulletTimer = 0;
+			me.audio.play("enemyshoot");
 		}
 	},
 	

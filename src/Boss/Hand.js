@@ -62,6 +62,7 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 				})
 			);
 		}
+		me.audio.play("enemyshoot");
 	},
 	
 	moveUp: function() {
@@ -94,6 +95,7 @@ GBGJ.HandBoss = GBGJ.Boss.extend({
 				})
 			);
 		}
+		me.audio.play("enemyshoot");
 	},
 
 	slide: function() {
