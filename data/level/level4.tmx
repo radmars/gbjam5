@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="65" height="15" tilewidth="16" tileheight="16" nextobjectid="179">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="65" height="15" tilewidth="16" tileheight="16" nextobjectid="212">
  <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="256" columns="16">
   <image source="../image/tilemap.png" width="256" height="256"/>
  </tileset>
@@ -248,8 +248,51 @@
   <object id="176" name="Path" type="EnemyBasic" x="784" y="117.5">
    <polyline points="0,0 -9,25.5 -54,63.5"/>
   </object>
-  <object id="177" name="Shotgun" x="559.75" y="33" width="11.5" height="11"/>
+  <object id="177" name="Shotgun" x="521.75" y="55.5" width="11.5" height="11"/>
   <object id="178" name="Bomb" x="369.75" y="144.5" width="11.5" height="11"/>
+  <object id="179" name="LevelChanger" x="928" y="30.125" width="74" height="143.75">
+   <properties>
+    <property name="nextLevel" value="level5"/>
+   </properties>
+  </object>
+  <object id="180" name="EnemyBoomer" x="663.5" y="68.5"/>
+  <object id="181" name="EnemyBoomer" x="789" y="70"/>
+  <object id="182" name="EnemyBoomer" x="798" y="139.5"/>
+  <object id="183" name="Path" type="EnemySpike" x="876.5" y="119">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="184" name="Path" type="EnemySpike" x="834" y="110">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="185" name="Path" type="EnemySpike" x="827" y="129.5">
+   <polyline points="0,0 -10,-33 -32,-41.5"/>
+  </object>
+  <object id="186" name="EnemyBasic" x="822.5" y="142.75" width="8" height="7.5"/>
+  <object id="187" name="EnemyBasic" x="807.5" y="118.25" width="8" height="7.5"/>
+  <object id="188" name="EnemyBasic" x="827.5" y="105.25" width="8" height="7.5"/>
+  <object id="189" name="EnemyBasic" x="800" y="86.75" width="8" height="7.5"/>
+  <object id="190" name="EnemyBasic" x="824.5" y="78.25" width="8" height="7.5"/>
+  <object id="191" name="EnemyBasic" x="811.5" y="50.75" width="8" height="7.5"/>
+  <object id="192" name="EnemyBasic" x="858" y="71.25" width="8" height="7.5"/>
+  <object id="193" name="EnemyBasic" x="870" y="112.75" width="8" height="7.5"/>
+  <object id="194" name="EnemyBasic" x="858" y="102.75" width="8" height="7.5"/>
+  <object id="195" name="EnemyBasic" x="882" y="84.75" width="8" height="7.5"/>
+  <object id="196" name="EnemyBasic" x="887" y="108.25" width="8" height="7.5"/>
+  <object id="197" name="EnemyBasic" x="874" y="127.75" width="8" height="7.5"/>
+  <object id="198" name="EnemyBasic" x="861" y="141.25" width="8" height="7.5"/>
+  <object id="199" name="EnemyBasic" x="841.5" y="150.25" width="8" height="7.5"/>
+  <object id="200" name="EnemyBasic" x="820.5" y="157.75" width="8" height="7.5"/>
+  <object id="201" name="EnemyBasic" x="805.5" y="158.25" width="8" height="7.5"/>
+  <object id="202" name="EnemyBasic" x="793.5" y="156.25" width="8" height="7.5"/>
+  <object id="203" name="EnemyBasic" x="774" y="123.25" width="8" height="7.5"/>
+  <object id="204" name="EnemyBasic" x="774.5" y="103.25" width="8" height="7.5"/>
+  <object id="205" name="EnemyBasic" x="777.5" y="82.25" width="8" height="7.5"/>
+  <object id="206" name="EnemyBasic" x="783.5" y="66.75" width="8" height="7.5"/>
+  <object id="207" name="EnemyBasic" x="794" y="57.25" width="8" height="7.5"/>
+  <object id="208" name="EnemyBasic" x="804" y="79.25" width="8" height="7.5"/>
+  <object id="209" name="EnemyBasic" x="795.5" y="92.75" width="8" height="7.5"/>
+  <object id="210" name="EnemyBasic" x="845.5" y="103.75" width="8" height="7.5"/>
+  <object id="211" name="EnemyBasic" x="825.5" y="121.25" width="8" height="7.5"/>
  </objectgroup>
  <objectgroup color="#ff0000" name="collision layer" opacity="0.79">
   <object id="17" x="162.667" y="224" width="157.333" height="16"/>
