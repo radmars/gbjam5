@@ -8,6 +8,7 @@ GBGJ.TitleScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		this.subscription = me.event.subscribe( me.event.KEYDOWN, this.keyHandler.bind(this));
 		me.game.world.addChild(new GBGJ.TitleRenderable());
+		me.audio.play("gbjam5-title");
 	},
 
 	keyHandler: function (action, keyCode, edge) {
@@ -20,6 +21,7 @@ GBGJ.TitleScreen = me.ScreenObject.extend({
 	},
 	onDestroyEvent: function() {
 		me.event.unsubscribe(this.subscription);
+		me.audio.stop("gbjam5-title");
 	},
 });
 

@@ -28,6 +28,21 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 		me.game.world.addChild(new GBGJ.LevelDisplay({
 			level: this.nextLevel,
 		}));
+
+		var song = "";
+		if (this.nextLevel == "level1") {
+			song = "gbjam5-1";
+		}
+		else if (this.nextLevel == "level3") {
+			song = "gbjam5-2";
+		}
+		else if (this.nextLevel == "level5") {
+			song = "gbjam5-3";
+		}
+		else if (this.nextLevel == "level6") {
+			song = "gbjam5-finalboss";
+		}
+		me.audio.playTrack(song);
 	},
 
 	loadNextLevel: function() {
@@ -37,6 +52,7 @@ GBGJ.PlayScreen = me.ScreenObject.extend({
 	},
 
 	onDestroyEvent: function() {
+		me.audio.stopTrack();
 	},
 
 	onModeChange: function(oldMode, newMode) {
