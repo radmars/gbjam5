@@ -76,7 +76,7 @@ GBGJ.Boss = me.Entity.extend({
 				);
 			}
 			this.changeAnimation("hit", this.changeAnimation.bind(this, "idle"));
-			me.audio.play("explosion2", 0.3);
+			me.audio.play("explosion2", false, null, 0.5);
 		}
 	},
 
@@ -131,7 +131,7 @@ GBGJ.BloodGenerator = me.Renderable.extend({
 					}
 				)
 			);
-			me.audio.play("explosion2", 0.5);
+			me.audio.play("explosion2", false, null, 0.2);
 		}
 		return false;
 	},

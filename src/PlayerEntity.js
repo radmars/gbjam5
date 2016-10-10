@@ -193,7 +193,7 @@ GBGJ.PlayerEntity = me.Entity.extend({
 
 	die: function() {
 		me.game.world.removeChild(this);
-		me.audio.play("playerdeath");
+		me.audio.play("playerdeath", false, null, 0.75);
 
 		GBGJ.playerWeapon = this.weapon = "";
 

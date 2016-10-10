@@ -141,8 +141,8 @@
 				)
 			);
 			me.game.world.removeChild(this);
-			me.audio.play("explosion", false, null, 0.5);
-			me.audio.play(this.getDeathSound(), false, null, 0.5);
+			me.audio.play("explosion", false, null, 0.4);
+			me.audio.play(this.getDeathSound(), false, null, 0.6);
 		},
 
 		onCollision : function (response, other) {
